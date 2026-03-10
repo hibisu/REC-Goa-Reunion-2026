@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Goa Reunion 2026 ✈️</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#040d14;color:#b8d4e0;font-family:'DM Sans',Arial,sans-serif;min-height:100vh}
+a{text-decoration:none}
+button{cursor:pointer;font-family:inherit}
+
+.app{background:radial-gradient(ellipse 100% 45% at 50% -5%,#0c2e42,transparent 65%),radial-gradient(ellipse 60% 35% at 90% 90%,#081e15,transparent 60%),#040d14;min-height:100vh;padding-bottom:60px}
+
+/* HERO */
+.hero{text-align:center;padding:32px 16px 16px}
+.badge{display:inline-block;background:#f59e0b18;border:1px solid #f59e0b44;border-radius:20px;padding:5px 16px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#fbbf24;margin-bottom:14px}
+.hero h1{font-family:'Syne',Arial,sans-serif;font-size:clamp(26px,6vw,50px);font-weight:800;color:#fff;line-height:1.1}
+.hero h1 em{font-style:normal;background:linear-gradient(120deg,#06b6d4,#34d399);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{color:#2e6070;font-size:13px;margin-top:8px}
+
+.wrap{max-width:960px;margin:0 auto;padding:0 14px}
+
+/* PANELS */
+.panel{background:#07131d;border:1px solid #102434;border-radius:14px;padding:20px;margin-bottom:14px}
+.stitle{font-family:'Syne',Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#2e7a90;margin-bottom:10px}
+
+/* HOW BANNER */
+.how{display:flex;gap:12px;background:#07131d;border:1px solid #102434;border-left:3px solid #06b6d4;border-radius:10px;padding:13px 15px;margin-bottom:14px;font-size:12px;color:#3a7a8a;line-height:1.7}
+.how b{color:#06b6d4}
+
+/* TRIP TOGGLE */
+.tt{display:flex;background:#040d14;border:1.5px solid #102434;border-radius:10px;overflow:hidden;margin-bottom:20px}
+.tt-btn{flex:1;border:none;background:transparent;padding:12px 8px;font-family:'Syne',Arial,sans-serif;font-size:13px;font-weight:700;color:#2e6070;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:7px}
+.tt-btn.on{background:linear-gradient(135deg,#0c6a82,#06b6d4);color:#fff}
+.tt-div{width:1px;background:#102434;flex-shrink:0}
+.spill{background:#34d39918;color:#34d399;font-size:9px;padding:2px 7px;border-radius:10px;font-weight:700;letter-spacing:.5px}
+
+/* ORIGIN CARDS */
+.og{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.oc{flex:1;min-width:120px;background:#040d14;border:2px solid #102434;border-radius:11px;padding:13px;cursor:pointer;transition:all .2s;position:relative;user-select:none}
+.oc:hover{transform:translateY(-2px)}
+.oc .chk{position:absolute;top:8px;right:10px;font-size:11px;display:none}
+.oc.sel .chk{display:block}
+.oc .code{font-family:'Syne',Arial,sans-serif;font-size:22px;font-weight:800}
+.oc .city{font-size:12px;color:#a0c0cc;margin:3px 0}
+.oc .term{font-size:9px;color:#1e4a5a;line-height:1.3}
+
+/* ZONES */
+.zrow{display:flex;gap:10px;margin-bottom:18px}
+.zb{flex:1;background:#040d14;border:2px solid #102434;border-radius:10px;padding:12px;cursor:pointer;color:#4a7a8a;transition:all .2s;text-align:left}
+.zb.sel{border-color:#06b6d4;background:#06b6d409;color:#06b6d4}
+.z-em{font-size:18px;margin-bottom:3px}
+.z-lb{font-family:'Syne',Arial,sans-serif;font-weight:700;font-size:13px}
+.z-lb span{font-size:10px;opacity:.6}
+.z-ds{font-size:9px;color:#1e4a5a;margin-top:2px}
+
+/* DATES */
+.drow{display:flex;gap:10px;margin-bottom:18px}
+.df{flex:1}
+.df label{display:block;font-size:9px;color:#2e6070;margin-bottom:5px;letter-spacing:.5px;text-transform:uppercase}
+.df input{width:100%;background:#040d14;border:2px solid #102434;border-radius:9px;padding:10px 13px;color:#b8d4e0;font-size:14px;font-family:inherit;outline:none;transition:border-color .2s}
+.df input:focus{border-color:#06b6d4}
+.df input:disabled{opacity:.25;cursor:not-allowed}
+input[type=date]::-webkit-calendar-picker-indicator{filter:invert(.4);cursor:pointer}
+
+/* SEARCH BTN */
+.sbtn{width:100%;background:linear-gradient(135deg,#06b6d4,#0c6a82);border:none;border-radius:11px;padding:15px;font-family:'Syne',Arial,sans-serif;font-size:15px;font-weight:800;color:#fff;letter-spacing:.3px;transition:all .2s}
+.sbtn:hover{transform:translateY(-2px);box-shadow:0 8px 28px #06b6d440}
+
+/* TREND SVG */
+.trend-meta{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.twarn{font-size:10px;color:#c97b1a;background:#f59e0b0d;border:1px solid #f59e0b22;border-radius:5px;padding:3px 8px;display:inline-block;margin-top:3px}
+.tsub{font-size:10px;color:#2e6070;margin-top:5px}
+.lgnd{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+.lpill{font-size:10px;padding:2px 9px;border-radius:20px;font-weight:600}
+.chart-svg{width:100%;height:auto;display:block}
+
+/* RESULTS */
+.ob{border-radius:14px;padding:18px;margin-bottom:14px;animation:up .35s ease both}
+@keyframes up{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.ob-top{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.ob-iata{font-family:'Syne',Arial,sans-serif;font-size:28px;font-weight:800}
+.ob-arr{font-size:22px;color:#2e6070}
+.ob-meta{font-size:11px;color:#3a7a8a}
+.ob-meta span{color:#1e4a5a}
+
+.egrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:9px}
+.ebtn{display:flex;align-items:center;gap:10px;background:#040d14;border:2px solid #102434;border-radius:10px;padding:11px 13px;transition:all .2s;color:inherit}
+.ebtn:hover{transform:translateY(-1px);box-shadow:0 4px 16px #00000060}
+.eicon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Syne',Arial,sans-serif;font-size:16px;font-weight:800;color:#fff;flex-shrink:0}
+.ename{font-family:'Syne',Arial,sans-serif;font-size:13px;font-weight:700;color:#c8e4f0}
+.ebadge{font-size:9px;padding:1px 7px;border-radius:10px;display:inline-block;margin-top:3px;font-weight:600}
+.earrow{font-size:14px;margin-left:auto;flex-shrink:0;font-weight:700;color:#2e6070}
+
+.ob-tip{margin-top:12px;padding:9px 12px;background:#06b6d408;border:1px solid #06b6d420;border-radius:8px;font-size:11px;color:#2e7090;line-height:1.5}
+.ob-tip b{color:#06b6d4}
+
+/* TIPS */
+.tips{background:linear-gradient(135deg,#061a10,#040d14);border:1px solid #0e3020;border-radius:12px;padding:15px;margin-bottom:14px}
+.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:6px;margin-top:8px}
+.ti{font-size:10px;color:#1e5a38;display:flex;gap:4px}
+
+/* EMPTY */
+.empty{text-align:center;padding:50px 20px}
+.eico{font-size:44px;margin-bottom:10px}
+.emsg{font-size:13px;color:#1e4a5a}
+.esub{font-size:10px;margin-top:5px;color:#0e2a38}
+
+@media(max-width:540px){
+  .og,.zrow,.drow,.egrid{flex-direction:column}
+  .egrid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="hero">
+  <div class="badge">🌴 Goa Reunion 2026</div>
+  <h1>Fly to <em>Goa</em><br>Everyone's on board</h1>
+  <p>Search 6 engines · 100% live prices · Find the best deal</p>
+</div>
+
+<div class="wrap">
+
+  <div class="how">
+    <span style="font-size:22px;flex-shrink:0">✈️</span>
+    <div><b>Why 6 engines?</b> No single site shows every airline. <b>Kayak & Skyscanner</b> often find budget carriers Google misses. <b>MakeMyTrip & EaseMyTrip</b> have India-specific deals and zero convenience fee offers. Fill in your details and get a direct pre-filled link for every platform instantly.</div>
+  </div>
+
+  <div class="panel">
+
+    <div class="stitle">🎫 Trip Type</div>
+    <div class="tt" id="tripToggle">
+      <button class="tt-btn on" id="btnOW" onclick="setTrip('oneway')">✈ One Way</button>
+      <div class="tt-div"></div>
+      <button class="tt-btn" id="btnRT" onclick="setTrip('roundtrip')">🔄 Round Trip <span class="spill">SAVE ~15%</span></button>
+    </div>
+
+    <div class="stitle">📍 Flying From — select everyone's city</div>
+    <div class="og">
+      <div class="oc sel" id="oc-CCU" onclick="toggleOrigin('CCU')" style="border-color:#f59e0b">
+        <span class="chk" style="color:#f59e0b">✓</span>
+        <div class="code" style="color:#f59e0b">CCU</div>
+        <div class="city">Kolkata</div>
+        <div class="term">Netaji S.C. Bose Int'l</div>
+      </div>
+      <div class="oc" id="oc-BLR" onclick="toggleOrigin('BLR')">
+        <span class="chk" style="color:#a78bfa">✓</span>
+        <div class="code" style="color:#a78bfa">BLR</div>
+        <div class="city">Bangalore</div>
+        <div class="term">Kempegowda International</div>
+      </div>
+      <div class="oc" id="oc-BOM" onclick="toggleOrigin('BOM')">
+        <span class="chk" style="color:#38bdf8">✓</span>
+        <div class="code" style="color:#38bdf8">BOM</div>
+        <div class="city">Mumbai</div>
+        <div class="term">CSIA T1 / T2</div>
+      </div>
+    </div>
+
+    <div class="stitle">🏝️ Flying To — Goa region</div>
+    <div class="zrow">
+      <button class="zb sel" id="zn-north" onclick="setZone('north')">
+        <div class="z-em">🏄</div>
+        <div class="z-lb">North Goa <span>(GOX)</span></div>
+        <div class="z-ds">Baga · Anjuna · Calangute</div>
+      </button>
+      <button class="zb" id="zn-south" onclick="setZone('south')">
+        <div class="z-em">🌴</div>
+        <div class="z-lb">South Goa <span>(GOI)</span></div>
+        <div class="z-ds">Palolem · Colva · Benaulim</div>
+      </button>
+    </div>
+
+    <div class="stitle">📅 Travel Dates</div>
+    <div class="drow">
+      <div class="df">
+        <label>✈ Departure</label>
+        <input type="date" id="depDate" onchange="onDepChange()"/>
+      </div>
+      <div class="df">
+        <label id="retLbl">↩ Return <em style="opacity:.5;font-size:9px">(one-way)</em></label>
+        <input type="date" id="retDate" disabled/>
+      </div>
+    </div>
+
+    <button class="sbtn" onclick="generate()">🔍 Generate Search Links for All 6 Engines</button>
+  </div>
+
+  <!-- TREND -->
+  <div class="panel" id="trendPanel"></div>
+
+  <!-- TIPS -->
+  <div class="tips">
+    <div class="stitle">🎓 Reunion Booking Tips</div>
+    <div class="tg">
+      <div class="ti">✅ Compare 3+ engines — prices vary ₹500–2,000</div>
+      <div class="ti">✅ Round-trips often 10–15% cheaper than 2 one-ways</div>
+      <div class="ti">✅ Tue & Wed departures typically cheapest</div>
+      <div class="ti">✅ Book 3–4 weeks ahead for domestic India</div>
+      <div class="ti">✅ EaseMyTrip often has zero convenience fee promos</div>
+      <div class="ti">✅ Enable price tracking alerts on Google Flights</div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="results">
+    <div class="panel empty">
+      <div class="eico">🏖️</div>
+      <div class="emsg">Your search links will appear here</div>
+      <div class="esub">Fill in your details above and click Generate</div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+var tripType = "oneway";
+var selectedOrigins = ["CCU"];
+var selectedZone = "north";
+
+var ODATA = {
+  CCU:{city:"Kolkata",  color:"#f59e0b",term:"Netaji S.C. Bose Int'l"},
+  BLR:{city:"Bangalore",color:"#a78bfa",term:"Kempegowda International"},
+  BOM:{city:"Mumbai",   color:"#38bdf8",term:"CSIA T1 / T2"}
+};
+var ZONES = {
+  north:{label:"North Goa",iata:"GOX",airport:"Manohar Intl (GOX)"},
+  south:{label:"South Goa",iata:"GOI",airport:"Dabolim (GOI)"}
+};
+
+// Set default dates
+function pad(n){return n<10?"0"+n:""+n}
+function makeDate(offset){
+  var d=new Date(); d.setDate(d.getDate()+offset);
+  return d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+}
+document.getElementById("depDate").value=makeDate(60);
+document.getElementById("depDate").min=makeDate(0);
+document.getElementById("retDate").value=makeDate(67);
+
+function setTrip(val){
+  tripType=val;
+  document.getElementById("btnOW").className="tt-btn"+(val==="oneway"?" on":"");
+  document.getElementById("btnRT").className="tt-btn"+(val==="roundtrip"?" on":"");
+  var ret=document.getElementById("retDate");
+  var lbl=document.getElementById("retLbl");
+  if(val==="roundtrip"){
+    ret.disabled=false;
+    lbl.innerHTML="↩ Return";
+  } else {
+    ret.disabled=true;
+    lbl.innerHTML='↩ Return <em style="opacity:.5;font-size:9px">(one-way)</em>';
+  }
+  drawTrend();
+}
+
+function toggleOrigin(code){
+  var card=document.getElementById("oc-"+code);
+  var idx=selectedOrigins.indexOf(code);
+  if(idx>-1){
+    if(selectedOrigins.length===1)return;
+    selectedOrigins.splice(idx,1);
+    card.classList.remove("sel");
+    card.style.borderColor="#102434";
+  } else {
+    selectedOrigins.push(code);
+    card.classList.add("sel");
+    card.style.borderColor=ODATA[code].color;
+  }
+  drawTrend();
+}
+
+function setZone(zone){
+  selectedZone=zone;
+  document.getElementById("zn-north").className="zb"+(zone==="north"?" sel":"");
+  document.getElementById("zn-south").className="zb"+(zone==="south"?" sel":"");
+}
+
+function onDepChange(){
+  var dep=document.getElementById("depDate").value;
+  var ret=document.getElementById("retDate");
+  ret.min=dep;
+  if(ret.value<=dep){
+    var d=new Date(dep); d.setDate(d.getDate()+7);
+    ret.value=d.getFullYear()+"-"+pad(d.getMonth()+1)+"-"+pad(d.getDate());
+  }
+}
+
+// URL BUILDERS
+function fmtDate(ds){
+  var p=ds.split("-"),y=p[0],m=p[1],d=p[2];
+  return {ymd:ds,mmddyyyy:m+"/"+d+"/"+y,yymmdd:y.slice(2)+m+d,dmy:d+"-"+m+"-"+y};
+}
+
+function buildUrls(orig,dest,dep,ret,tt){
+  var D=fmtDate(dep), R=ret?fmtDate(ret):null, isRT=tt==="roundtrip";
+  var dL=dest.toLowerCase(), oL=orig.toLowerCase();
+  return [
+    {name:"Google Flights",icon:"G",color:"#4285F4",badge:"Most popular",
+     url:isRT?"https://www.google.com/travel/flights?q=round+trip+flights+from+"+orig+"+to+"+dest+"+on+"+D.ymd+"+returning+"+R.ymd+"&curr=INR"
+             :"https://www.google.com/travel/flights?q=one+way+flights+from+"+orig+"+to+"+dest+"+on+"+D.ymd+"&curr=INR"},
+    {name:"Kayak",icon:"K",color:"#FF690F",badge:"Best for deals",
+     url:isRT?"https://www.kayak.co.in/flights/"+orig+"-"+dest+"/"+D.ymd+"/"+R.ymd+"?sort=price_a"
+             :"https://www.kayak.co.in/flights/"+orig+"-"+dest+"/"+D.ymd+"?sort=price_a"},
+    {name:"Skyscanner",icon:"S",color:"#0770E3",badge:"Checks all airlines",
+     url:isRT?"https://www.skyscanner.co.in/transport/flights/"+oL+"/"+dL+"/"+D.yymmdd+"/"+R.yymmdd+"/?adults=1&currency=INR&market=IN&locale=en-IN"
+             :"https://www.skyscanner.co.in/transport/flights/"+oL+"/"+dL+"/"+D.yymmdd+"/?adults=1&currency=INR&market=IN&locale=en-IN"},
+    {name:"MakeMyTrip",icon:"M",color:"#E8113A",badge:"Best Indian deals",
+     url:isRT?"https://www.makemytrip.com/flights/roundtrip-"+oL+"-"+dL+".html?departDate="+D.mmddyyyy+"&returnDate="+R.mmddyyyy+"&class=E&adults=1"
+             :"https://www.makemytrip.com/flights/oneway-"+oL+"-"+dL+".html?departDate="+D.mmddyyyy+"&class=E&adults=1"},
+    {name:"Cleartrip",icon:"C",color:"#EF5226",badge:"Low-cost carriers",
+     url:isRT?"https://www.cleartrip.com/flights/results?adults=1&childs=0&infants=0&class=Economy&depart_date="+D.dmy+"&return_date="+R.dmy+"&from="+orig+"&to="+dest+"&roundtrip=true"
+             :"https://www.cleartrip.com/flights/results?adults=1&childs=0&infants=0&class=Economy&depart_date="+D.dmy+"&from="+orig+"&to="+dest},
+    {name:"EaseMyTrip",icon:"E",color:"#00A3E0",badge:"No convenience fee",
+     url:isRT?"https://flight.easemytrip.com/FlightList/Index?seg=RT&org="+orig+"&dest="+dest+"&ddate="+D.mmddyyyy+"&rdate="+R.mmddyyyy+"&adult=1&child=0&infant=0&cls=1"
+             :"https://flight.easemytrip.com/FlightList/Index?seg=OW&org="+orig+"&dest="+dest+"&ddate="+D.mmddyyyy+"&adult=1&child=0&infant=0&cls=1"}
+  ];
+}
+
+function generate(){
+  var dep=document.getElementById("depDate").value;
+  var ret=document.getElementById("retDate").value;
+  var zone=ZONES[selectedZone];
+  var area=document.getElementById("results");
+  area.innerHTML="";
+
+  for(var i=0;i<selectedOrigins.length;i++){
+    var code=selectedOrigins[i];
+    var o=ODATA[code];
+    var urls=buildUrls(code,zone.iata,dep,ret,tripType);
+    var depFmt=new Date(dep).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
+    var retFmt=(tripType==="roundtrip"&&ret)?new Date(ret).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}):"";
+    var arrow=tripType==="roundtrip"?"⇄":"→";
+    var ttLabel=tripType==="roundtrip"?"Round Trip":"One Way";
+    var dateStr=retFmt?depFmt+" ↩ "+retFmt:depFmt;
+
+    var block=document.createElement("div");
+    block.className="ob";
+    block.style.background="#07131d";
+    block.style.border="1px solid "+o.color+"33";
+    block.style.animationDelay=(i*100)+"ms";
+
+    var html='<div class="ob-top">';
+    html+='<span class="ob-iata" style="color:'+o.color+'">'+code+'</span>';
+    html+='<span class="ob-arr">'+arrow+'</span>';
+    html+='<span class="ob-iata" style="color:#06b6d4">'+zone.iata+'</span>';
+    html+='<div class="ob-meta">'+o.city+' → '+zone.label+' <span>·</span> '+dateStr+' <span>·</span> '+ttLabel+'</div>';
+    html+='</div>';
+    html+='<div class="egrid" id="eg-'+code+'"></div>';
+    html+='<div class="ob-tip">💡 <b>Pro tip:</b> Open all 6 in separate tabs and sort by price — different engines show different airlines and exclusive deals!</div>';
+    block.innerHTML=html;
+    area.appendChild(block);
+
+    var grid=document.getElementById("eg-"+code);
+    for(var j=0;j<urls.length;j++){
+      var e=urls[j];
+      var a=document.createElement("a");
+      a.href=e.url; a.target="_blank"; a.rel="noreferrer"; a.className="ebtn";
+      a.style.borderColor="#102434";
+      a.innerHTML='<div class="eicon" style="background:'+e.color+'">'+e.icon+'</div>'
+        +'<div style="flex:1;min-width:0"><div class="ename">'+e.name+'</div>'
+        +'<div class="ebadge" style="color:'+e.color+';background:'+e.color+'18">'+e.badge+'</div></div>'
+        +'<div class="earrow" style="color:'+e.color+'">↗</div>';
+      (function(el,ec){
+        el.addEventListener("mouseenter",function(){el.style.borderColor=ec+"66";});
+        el.addEventListener("mouseleave",function(){el.style.borderColor="#102434";});
+        el.addEventListener("click",function(){el.querySelector(".earrow").textContent="✓";el.querySelector(".earrow").style.color="#34d399";});
+      })(a,e.color);
+      grid.appendChild(a);
+    }
+  }
+}
+
+// SVG TREND CHART
+function makeTrend(origin,isRT){
+  var bases={CCU:4800,BLR:3200,BOM:2700};
+  var b=bases[origin]*(isRT?1.8:1);
+  var p=b, s=origin.charCodeAt(0)*31+(isRT?7:3);
+  var rng=function(){s=(s*1664525+1013904223)&0xffffffff;return (s>>>0)/4294967296;};
+  var now=new Date(), pts=[];
+  for(var i=0;i<14;i++){
+    var d=new Date(now); d.setDate(d.getDate()+i*5);
+    var lbl=d.toLocaleDateString("en-IN",{day:"2-digit",month:"short"});
+    p=Math.max(b*.6,Math.min(b*1.6,p+(rng()-.46)*.13*p));
+    pts.push({label:lbl,price:Math.round(p/50)*50,idx:i});
+  }
+  return pts;
+}
+
+function drawTrend(){
+  var isRT=tripType==="roundtrip";
+  var cols=selectedOrigins.length?selectedOrigins:["CCU"];
+  var CLRS={CCU:"#f59e0b",BLR:"#a78bfa",BOM:"#38bdf8"};
+  var allData={};
+  for(var i=0;i<cols.length;i++) allData[cols[i]]=makeTrend(cols[i],isRT);
+
+  var primary=allData[cols[0]];
+  var best=primary[0];
+  for(var i=1;i<primary.length;i++) if(primary[i].price<best.price) best=primary[i];
+
+  var allPrices=[];
+  for(var k in allData) for(var i=0;i<allData[k].length;i++) allPrices.push(allData[k][i].price);
+  var minP=Math.min.apply(null,allPrices)*0.95;
+  var maxP=Math.max.apply(null,allPrices)*1.05;
+
+  var W=700,H=180,PL=52,PR=10,PT=10,PB=30;
+  var cW=W-PL-PR, cH=H-PT-PB;
+  var xS=function(i){return (i/(primary.length-1))*cW;};
+  var yS=function(v){return cH-((v-minP)/(maxP-minP))*cH;};
+
+  var svg='<svg class="chart-svg" viewBox="0 0 '+W+' '+H+'" xmlns="http://www.w3.org/2000/svg">';
+
+  // grid lines
+  for(var i=0;i<=4;i++){
+    var v=minP+((maxP-minP)*i/4);
+    var y=PT+yS(v);
+    svg+='<line x1="'+PL+'" y1="'+y+'" x2="'+(W-PR)+'" y2="'+y+'" stroke="#172d3d" stroke-dasharray="3 3"/>';
+    svg+='<text x="'+(PL-4)+'" y="'+(y+4)+'" fill="#3a6878" font-size="9" text-anchor="end" font-family="DM Sans,Arial,sans-serif">₹'+(v/1000).toFixed(1)+'k</text>';
+  }
+
+  // areas + lines
+  for(var k=0;k<cols.length;k++){
+    var o=cols[k], data=allData[o], c=CLRS[o];
+    var pts="";
+    for(var i=0;i<data.length;i++) pts+=(PL+xS(i))+","+(PT+yS(data[i].price))+" ";
+    var fx=PL+xS(0), lx=PL+xS(data.length-1), bot=PT+cH;
+    svg+='<polygon points="'+pts+lx+","+bot+" "+fx+","+bot+'" fill="'+c+'" fill-opacity="0.1"/>';
+    var path="";
+    for(var i=0;i<data.length;i++) path+=(i===0?"M":"L")+(PL+xS(i))+","+(PT+yS(data[i].price))+" ";
+    svg+='<path d="'+path+'" fill="none" stroke="'+c+'" stroke-width="2" stroke-linejoin="round"/>';
+  }
+
+  // best-buy marker
+  var bx=PL+xS(best.idx);
+  svg+='<line x1="'+bx+'" y1="'+PT+'" x2="'+bx+'" y2="'+(PT+cH)+'" stroke="#f59e0b" stroke-dasharray="4 2" stroke-width="1.5"/>';
+  svg+='<text x="'+(bx+4)+'" y="'+(PT+11)+'" fill="#f59e0b" font-size="8" font-family="DM Sans,Arial,sans-serif">Best window</text>';
+
+  // x labels
+  for(var i=0;i<primary.length;i++){
+    if(i%2===0){
+      var x=PL+xS(i);
+      svg+='<text x="'+x+'" y="'+(H-4)+'" fill="#3a6878" font-size="8.5" text-anchor="middle" font-family="DM Sans,Arial,sans-serif">'+primary[i].label+'</text>';
+    }
+  }
+  svg+='</svg>';
+
+  var legendHtml="";
+  for(var i=0;i<cols.length;i++){
+    var c=CLRS[cols[i]];
+    legendHtml+='<span class="lpill" style="color:'+c+';background:'+c+'18;border:1px solid '+c+'33">● '+cols[i]+'</span>';
+  }
+
+  document.getElementById("trendPanel").innerHTML=
+    '<div class="trend-meta">'
+    +'<div><div class="stitle">📈 Estimated Price Trend — Next 70 Days</div>'
+    +'<div class="twarn">⚠️ Illustrative only — use the engines below for live prices</div>'
+    +'<div class="tsub">Likely best window: <b style="color:#34d399">'+best.label+'</b> · est. ₹'+best.price.toLocaleString("en-IN")+' · '+(isRT?"Round-trip":"One-way")+'</div></div>'
+    +'<div class="lgnd">'+legendHtml+'</div>'
+    +'</div>'
+    +svg;
+}
+
+drawTrend();
+</script>
+</body>
+</html>
