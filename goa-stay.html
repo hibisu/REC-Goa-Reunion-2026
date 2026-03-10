@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Goa Reunion 2026 — 360° Stay Guide 🌴</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#040e18;--ocean:#07263a;--deep:#0a3d56;--mid:#0d5470;
+  --teal:#0e9aa7;--aqua:#3fc1c0;--sky:#7ee8e8;
+  --sand:#f5e6c8;--sand2:#eedcb0;--amber:#f4a228;--coral:#f4623a;
+  --sunset:#ff8c42;--gold:#ffd166;--green:#34d399;--purple:#a78bfa;
+  --card:#0b3347;--card2:#0d3f55;--border:#1a5570;
+  --text:#c8dde8;--muted:#5a8fa0;--white:#fffdf7;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100vh;background:var(--ink);font-family:'Nunito',sans-serif;color:var(--text)}
+a{text-decoration:none;color:inherit}
+button{cursor:pointer;font-family:inherit}
+
+/* ── HERO ── */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(170deg,#020c14 0%,#07263a 35%,#0e6080 80%,#0a4a60 100%);
+  padding:28px 20px 90px;text-align:center;
+}
+.hero-rain{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.raindrop{position:absolute;width:1.5px;background:linear-gradient(to bottom,transparent,rgba(62,193,192,.35));animation:fall linear infinite;border-radius:2px}
+@keyframes fall{from{transform:translateY(-100px)}to{transform:translateY(110vh)}}
+.hero-wave{position:absolute;bottom:-1px;left:0;right:0}
+.reunion-pill{display:inline-flex;align-items:center;gap:6px;background:#f4a22820;border:1px solid #f4a22850;border-radius:20px;padding:5px 16px;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,6vw,58px);font-weight:900;color:var(--white);line-height:1.08}
+.hero h1 em{font-style:italic;color:var(--aqua)}
+.hero-sub{margin-top:8px;color:var(--muted);font-size:13px;letter-spacing:.3px}
+.hero-dates{display:inline-flex;align-items:center;gap:8px;margin-top:12px;background:#ffffff10;border:1px solid #ffffff22;border-radius:12px;padding:9px 18px;font-size:13px;color:var(--sand2)}
+.hero-dates b{color:var(--gold)}
+.hero-base{display:inline-flex;align-items:center;gap:7px;margin-top:8px;background:#0e9aa718;border:1px solid #0e9aa740;border-radius:12px;padding:7px 16px;font-size:12px;color:var(--aqua)}
+
+/* ── WEATHER STRIP ── */
+.wd-icon{font-size:32px;margin-bottom:6px;display:block}
+.wd-desc{font-family:'Playfair Display',serif;font-size:14px;color:var(--white);font-weight:700;margin-bottom:4px}
+.wd-temp{font-size:11px;color:var(--sand2);margin-bottom:8px}
+.wd-pills{display:flex;flex-wrap:wrap;gap:4px}
+.wd-pill{font-size:9px;padding:2px 7px;border-radius:8px;font-weight:700;letter-spacing:.3px}
+.wd-alert{background:#f4623a18;border:1px solid #f4623a40;border-radius:8px;padding:5px 9px;font-size:9px;color:#f4623a;margin-top:6px;display:flex;align-items:center;gap:4px}
+
+/* ── WRAP ── */
+.wrap{max-width:1000px;margin:0 auto;padding:0 14px}
+
+/* ── TABS ── */
+.tabs-outer{background:var(--ink);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
+.tabs-bar{display:flex;gap:4px;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding:10px 14px;max-width:1000px;margin:0 auto;scrollbar-width:none}
+.tabs-bar::-webkit-scrollbar{display:none}
+.tab{border:none;background:var(--card);border:1.5px solid var(--border);border-radius:24px;padding:8px 14px;font-size:11.5px;font-weight:700;color:var(--muted);transition:all .2s;white-space:nowrap;letter-spacing:.2px;flex-shrink:0}
+.tab:hover{color:var(--sand);border-color:var(--teal)}
+.tab.on{background:linear-gradient(135deg,var(--teal),var(--mid));color:var(--white);border-color:var(--aqua);box-shadow:0 4px 14px #0e9aa750}
+
+/* ── SECTIONS ── */
+.section{display:none;padding-top:22px;animation:fadeUp .3s ease}
+.section.on{display:block}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sec-head{margin-bottom:18px}
+.sec-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold)}
+.sec-sub{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* ── CARDS ── */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;transition:all .2s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent,var(--teal));border-radius:4px 0 0 4px}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 28px #00000050;border-color:var(--accent,var(--teal))}
+.card-emoji{font-size:22px;margin-bottom:8px;display:block}
+.card-name{font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--white);margin-bottom:4px}
+.card-dist{display:inline-flex;align-items:center;gap:4px;background:#ffffff0f;border-radius:20px;padding:2px 10px;font-size:10px;color:var(--gold);margin-bottom:8px;font-weight:600}
+.card-desc{font-size:11px;color:var(--muted);line-height:1.65;margin-bottom:10px}
+.card-tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.tag{font-size:9px;padding:2px 8px;border-radius:8px;font-weight:700;letter-spacing:.3px}
+.btn{display:inline-flex;align-items:center;gap:5px;background:var(--accent,var(--teal));border:none;border-radius:8px;padding:7px 13px;font-size:11px;font-weight:700;color:var(--white);transition:opacity .2s;cursor:pointer}
+.btn:hover{opacity:.83}
+.btn-ghost{background:transparent;border:1.5px solid var(--accent,var(--teal));color:var(--accent,var(--teal));margin-left:5px}
+.btn-map{background:#1a6070;border:none;border-radius:8px;padding:7px 12px;font-size:11px;font-weight:700;color:var(--aqua);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:4px}
+.btn-map:hover{background:#1e7a8a;color:var(--white)}
+
+/* ── RESORT CARD ── */
+.resort-hero{background:linear-gradient(135deg,#0d5068,#0a3d52);border:2px solid var(--gold);border-radius:16px;padding:22px;margin-bottom:20px}
+.resort-badge{background:var(--gold);color:#0a2a38;font-family:'Playfair Display',serif;font-size:12px;font-weight:700;padding:3px 12px;border-radius:20px;display:inline-block;margin-bottom:10px}
+.resort-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--white);margin-bottom:4px}
+.resort-addr{font-size:12px;color:var(--muted);line-height:1.6}
+.amenity-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.amenity{background:#ffffff0f;border:1px solid #ffffff1a;border-radius:8px;padding:3px 10px;font-size:10px;color:var(--sand2)}
+.resort-contacts{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.r-contact{display:flex;align-items:center;gap:6px;background:#f4a22818;border:1px solid #f4a22840;border-radius:8px;padding:7px 13px;font-size:12px;color:var(--gold);font-weight:600;transition:all .2s}
+.r-contact:hover{background:#f4a22830}
+
+/* ── RESTAURANT TABLE ── */
+.resto-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;margin-bottom:20px}
+.resto-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:all .2s}
+.resto-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px #00000050}
+.resto-header{padding:14px 16px 10px;border-bottom:1px solid var(--border)}
+.resto-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:700;color:var(--white)}
+.resto-type{font-size:10px;color:var(--muted);margin-top:2px;letter-spacing:.4px}
+.resto-body{padding:12px 16px}
+.resto-row{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px;font-size:11px}
+.resto-icon{font-size:14px;flex-shrink:0;width:18px;text-align:center}
+.resto-label{color:var(--muted);width:56px;flex-shrink:0}
+.resto-val{color:var(--sand2);flex:1;line-height:1.5}
+.resto-open{display:inline-flex;align-items:center;gap:4px;background:var(--g,#34d39918);border:1px solid var(--gc,#34d39940);border-radius:10px;padding:2px 9px;font-size:9px;font-weight:700;color:var(--gt,#34d399)}
+
+/* ── QUICK STATS ── */
+.quick-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:20px}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center}
+.stat-ico{font-size:26px;margin-bottom:6px}
+.stat-val{font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:2px}
+.stat-lbl{font-size:10px;color:var(--muted)}
+
+/* ── TIPS ── */
+.tips{border-radius:12px;padding:14px;margin-bottom:16px}
+.tips-title{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:9px}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:5px}
+.tip{font-size:10px;display:flex;gap:5px;line-height:1.5}
+
+/* ── EMERGENCY ── */
+.emer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin-bottom:18px}
+.emer-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;transition:all .2s}
+.emer-card:hover{transform:translateY(-2px)}
+.emer-ico{font-size:28px;margin-bottom:8px}
+.emer-lbl{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:3px}
+.emer-num{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:3px}
+.emer-sub{font-size:9px;color:var(--muted)}
+.emer-call{display:block;margin-top:10px;border:none;border-radius:8px;padding:7px;font-size:12px;font-weight:700;color:#fff;cursor:pointer;transition:opacity .2s;width:100%}
+.emer-call:hover{opacity:.85}
+
+/* ── BEACH ADVISORY ── */
+.sea-advisory{background:linear-gradient(135deg,#1a0a00,#0a3d52);border:1.5px solid #f4623a55;border-radius:12px;padding:14px;margin-bottom:16px}
+
+/* ── GETTING AROUND ── */
+.transport-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-bottom:20px}
+.transport-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px}
+
+/* ── SCROLL TOP ── */
+.scroll-top{position:fixed;bottom:20px;right:16px;background:var(--teal);border:none;border-radius:50%;width:42px;height:42px;font-size:18px;color:#fff;cursor:pointer;box-shadow:0 4px 16px #0e9aa770;transition:all .2s;z-index:200}
+.scroll-top:hover{transform:scale(1.1)}
+
+/* ── FOOTER ── */
+.footer{text-align:center;padding:28px 20px;color:var(--border);font-size:11px;border-top:1px solid var(--border);margin-top:20px;line-height:1.8}
+
+@media(max-width:560px){
+  .cards,.emer-grid,.resto-grid,.quick-stats,.transport-grid{grid-template-columns:1fr}
+  .tabs-bar{justify-content:flex-start}
+  .weather-inner{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════ -->
+<div class="hero">
+  <!-- Rain animation -->
+  <div class="hero-rain" id="rain"></div>
+
+  <div class="reunion-pill">🌴 REC Durgapur Reunion 2026</div>
+  <h1>Your <em>Goa</em><br/>360° Stay Guide</h1>
+  <p class="hero-sub">Everything you need — hotels, beaches, food, shopping, emergency · all in one page</p>
+  <br/>
+  <div class="hero-dates">📅 <b>September 18 – 20, 2026</b> &nbsp;·&nbsp; 3 Days in Paradise</div>
+  <br/>
+  <div class="hero-base">📍 Base Resort: <b style="color:var(--gold);margin-left:4px">Holiday Inn Resort Goa, an IHG Hotel · Mobor Beach, Cavelossim</b></div>
+
+  <svg class="hero-wave" viewBox="0 0 1440 70" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M0,35 C360,70 720,0 1080,35 C1260,52 1380,28 1440,35 L1440,70 L0,70Z" fill="#040e18"/>
+  </svg>
+</div>
+
+<!-- ══ WEATHER STRIP ══════════════════════ -->
+
+
+<!-- ══ STICKY TABS ══════════════════════ -->
+<div class="tabs-outer">
+  <div class="tabs-bar">
+    <button class="tab on"  onclick="showTab('home','this')">🏨 Hotel</button>
+    <button class="tab"     onclick="showTab('dining','this')">🍽️ Dining</button>
+    <button class="tab"     onclick="showTab('beaches','this')">🏖️ Beaches</button>
+    <button class="tab"     onclick="showTab('sights','this')">🗺️ Sightseeing</button>
+    <button class="tab"     onclick="showTab('food','this')">🍜 Restaurants</button>
+    <button class="tab"     onclick="showTab('shopping','this')">🛍️ Shopping</button>
+    <button class="tab"     onclick="showTab('activities','this')">🎯 Activities</button>
+    <button class="tab"     onclick="showTab('transport','this')">🛺 Transport</button>
+    <button class="tab"     onclick="showTab('emergency','this')">🚑 Emergency</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ══════════════════════════════════════════════
+     HOME — HOTEL BASE CAMP
+══════════════════════════════════════════════ -->
+<div class="section on" id="sec-home">
+
+  <div class="resort-hero">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start">
+      <div style="flex:1;min-width:220px">
+        <div class="resort-badge">⭐⭐⭐⭐⭐ Your Base Resort</div>
+        <div class="resort-name">Holiday Inn Resort Goa</div>
+        <div class="resort-addr">
+          Mobor Beach, Cavelossim, Salcete<br/>
+          South Goa, Goa – 403731
+        </div>
+        <div class="amenity-row">
+          <span class="amenity">🏊 Pool</span><span class="amenity">🌊 Beach Access</span>
+          <span class="amenity">🍽️ 4 Outlets</span><span class="amenity">🍹 Bars</span>
+          <span class="amenity">🧖 Spa</span><span class="amenity">🏋️ Gym</span>
+          <span class="amenity">🎶 Live Music</span><span class="amenity">📶 Free WiFi</span>
+          <span class="amenity">🅿️ Parking</span><span class="amenity">🚗 Airport Shuttle</span>
+        </div>
+        <!-- On-site Dining -->
+        <div style="margin:12px 0 4px;font-size:10px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase">🍽️ On-Site Dining at Holiday Inn</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px;margin-bottom:12px">
+          <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Resort+Goa+Cavelossim" target="_blank" style="background:#0e9aa712;border:1px solid #0e9aa730;border-radius:9px;padding:9px 11px;display:block;transition:all .2s" onmouseover="this.style.borderColor='#0e9aa770'" onmouseout="this.style.borderColor='#0e9aa730'">
+            <div style="font-size:13px;font-weight:700;color:var(--white)">🥘 The Market Café</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:3px;line-height:1.5">All-day buffet dining · Breakfast, lunch & dinner · Indian & international · Open 7am–11pm</div>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Resort+Goa+Cavelossim" target="_blank" style="background:#f4623a10;border:1px solid #f4623a30;border-radius:9px;padding:9px 11px;display:block;transition:all .2s" onmouseover="this.style.borderColor='#f4623a70'" onmouseout="this.style.borderColor='#f4623a30'">
+            <div style="font-size:13px;font-weight:700;color:var(--white)">🦐 Fisherman's Cove</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:3px;line-height:1.5">Specialty seafood restaurant · Fresh catch daily · Goan & coastal cuisine · Dinner only</div>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Resort+Goa+Cavelossim" target="_blank" style="background:#f4a22812;border:1px solid #f4a22830;border-radius:9px;padding:9px 11px;display:block;transition:all .2s" onmouseover="this.style.borderColor='#f4a22870'" onmouseout="this.style.borderColor='#f4a22830'">
+            <div style="font-size:13px;font-weight:700;color:var(--white)">🍹 Pool Bar & Lounge</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:3px;line-height:1.5">Cocktails, mocktails & snacks poolside · Light bites all day · Live music evenings · Open till late</div>
+          </a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Resort+Goa+Cavelossim" target="_blank" style="background:#a78bfa12;border:1px solid #a78bfa30;border-radius:9px;padding:9px 11px;display:block;transition:all .2s" onmouseover="this.style.borderColor='#a78bfa70'" onmouseout="this.style.borderColor='#a78bfa30'">
+            <div style="font-size:13px;font-weight:700;color:var(--white)">🌅 Lobby Bar</div>
+            <div style="font-size:10px;color:var(--muted);margin-top:3px;line-height:1.5">Evening drinks & sundowners · Goan Feni cocktails · Snacks & small plates · 5pm–midnight</div>
+          </a>
+        </div>
+        <div style="background:#f4623a10;border:1px solid #f4623a25;border-radius:8px;padding:7px 12px;font-size:10px;color:#f4a070;margin-bottom:10px">
+          💡 <b style="color:var(--gold)">Tip:</b> Book Fisherman's Cove at the hotel front desk for your group dinner — limited covers, fills up fast on weekends!
+        </div>
+
+        <div class="resort-contacts">
+          <a href="tel:+918326626000" class="r-contact">📞 +91 832 662 6000</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Resort+Goa+Mobor+Beach+Cavelossim" target="_blank" class="r-contact" style="color:var(--aqua);border-color:#3fc1c040;background:#3fc1c018">🗺️ Open in Google Maps</a>
+        </div>
+      </div>
+      <div style="text-align:center;min-width:120px">
+        <div style="font-size:64px">🏨</div>
+        <div style="font-size:11px;color:var(--muted);margin-top:6px">Mobor Beach<br/>South Goa</div>
+        <div style="margin-top:8px;background:#f4a22818;border:1px solid #f4a22840;border-radius:8px;padding:5px 10px;font-size:10px;color:var(--gold)">Sep 18–20, 2026</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick stats -->
+  <div class="quick-stats">
+    <div class="stat"><div class="stat-ico">🏖️</div><div class="stat-val" style="color:var(--aqua)">0.3 km</div><div class="stat-lbl">Mobor Beach</div></div>
+    <div class="stat"><div class="stat-ico">🌡️</div><div class="stat-val" style="color:var(--amber)">27–33°C</div><div class="stat-lbl">Typical temp in Goa</div></div>
+    <div class="stat"><div class="stat-ico">🗺️</div><div class="stat-val" style="color:var(--teal)">20+</div><div class="stat-lbl">Sights within 25km</div></div>
+    <div class="stat"><div class="stat-ico">🍽️</div><div class="stat-val" style="color:var(--sunset)">4</div><div class="stat-lbl">On-site dining venues</div></div>
+    <div class="stat"><div class="stat-ico">🚑</div><div class="stat-val" style="color:var(--coral)">108</div><div class="stat-lbl">Ambulance (free)</div></div>
+    <div class="stat"><div class="stat-ico">🛵</div><div class="stat-val" style="color:var(--green)">₹400/day</div><div class="stat-lbl">Scooter rental</div></div>
+  </div>
+
+
+  <div class="tips" style="background:linear-gradient(135deg,#061a10,#071828);border:1px solid #1a6030">
+    <div class="tips-title" style="color:var(--green)">🌴 Cavelossim Essentials — Tips for the Group</div>
+    <div class="tips-grid">
+      <div class="tip" style="color:#2a6040">✅ Rent scooters — best way to explore South Goa. Helmet mandatory.</div>
+      <div class="tip" style="color:#2a6040">✅ Saturday Night Market in Arpora — absolute must for the group!</div>
+      <div class="tip" style="color:#2a6040">✅ Carry ₹2,000 cash — many beach shacks don't take cards</div>
+      <div class="tip" style="color:#2a6040">✅ Beaches are free — shack food &amp; beer ₹300–600 per person</div>
+      <div class="tip" style="color:#2a6040">✅ Book Thalassa &amp; Bomra's at least 2 days ahead for the group</div>
+      <div class="tip" style="color:#2a6040">✅ Feni (cashew spirit) is Goa's signature local drink — try it!</div>
+      <div class="tip" style="color:#2a6040">✅ Fort Aguada &amp; Chapora Fort are free entry — go at sunset</div>
+      <div class="tip" style="color:#2a6040">✅ Best time at beach: early morning 6–10am and late afternoon 4–7pm</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════════
+     DINING INSIDE HOLIDAY INN
+══════════════════════════════════════════════ -->
+<div class="section" id="sec-dining">
+  <div class="sec-head">
+    <div class="sec-title">🍽️ Dining Inside Holiday Inn Resort Goa</div>
+    <div class="sec-sub">4 on-site dining venues · All within your hotel · Sorted by opening time</div>
+  </div>
+
+  <div style="background:#0e9aa718;border:1px solid #0e9aa730;border-radius:10px;padding:11px 14px;margin-bottom:16px;font-size:12px;color:var(--aqua)">
+    💡 <b>Tip:</b> You literally don't need to leave the resort for a full day — Citrus covers all meals, Blue is poolside, the bar handles evenings, and Waves does beach-view sunset cocktails. Perfect!
+  </div>
+
+  <div class="resto-grid">
+
+    <!-- CITRUS -->
+    <div class="resto-card" style="--accent:var(--gold)">
+      <div class="resto-header" style="border-left:4px solid var(--gold)">
+        <div class="resto-name">🍳 Citrus</div>
+        <div class="resto-type">ALL-DAY DINING · MULTI-CUISINE RESTAURANT</div>
+      </div>
+      <div class="resto-body">
+        <div class="resto-row"><span class="resto-icon">🕐</span><span class="resto-label">Breakfast</span><span class="resto-val"><b style="color:var(--sand2)">7:00 AM – 10:30 AM</b><br/>International buffet · Eggs to order · Goan specialties · Freshly baked pastries · Juices &amp; smoothies</span></div>
+        <div class="resto-row"><span class="resto-icon">🍛</span><span class="resto-label">Lunch</span><span class="resto-val"><b style="color:var(--sand2)">12:30 PM – 3:00 PM</b><br/>A la carte &amp; buffet · Indian, Chinese, Continental, Goan curries</span></div>
+        <div class="resto-row"><span class="resto-icon">🌙</span><span class="resto-label">Dinner</span><span class="resto-val"><b style="color:var(--sand2)">7:00 PM – 11:00 PM</b><br/>Themed dinner nights · Live cooking stations · Live music on weekends</span></div>
+        <div class="resto-row"><span class="resto-icon">💰</span><span class="resto-label">Budget</span><span class="resto-val">Buffet ₹800–1,400/head · A la carte ₹500–1,200/head</span></div>
+        <div class="resto-row"><span class="resto-icon">🎯</span><span class="resto-label">Must Try</span><span class="resto-val">Goan fish curry, prawn xacuti, bebinca dessert, Goan sausage at breakfast</span></div>
+        <div style="margin-top:6px"><span class="resto-open">🟢 Opens 7:00 AM Daily</span></div>
+        <div style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&query=Citrus+Restaurant+Holiday+Inn+Resort+Goa+Cavelossim" target="_blank" class="btn-map">🗺️ Maps</a></div>
+      </div>
+    </div>
+
+    <!-- BLUE -->
+    <div class="resto-card" style="--accent:var(--aqua)">
+      <div class="resto-header" style="border-left:4px solid var(--aqua)">
+        <div class="resto-name">🔵 Blue — Pool Bar &amp; Grill</div>
+        <div class="resto-type">POOLSIDE CASUAL DINING · GRILLS &amp; SNACKS</div>
+      </div>
+      <div class="resto-body">
+        <div class="resto-row"><span class="resto-icon">🕐</span><span class="resto-label">Hours</span><span class="resto-val"><b style="color:var(--sand2)">10:00 AM – 7:00 PM</b><br/>Open daily (check with hotel for current hours)</span></div>
+        <div class="resto-row"><span class="resto-icon">🍹</span><span class="resto-label">Menu</span><span class="resto-val">Cocktails, mocktails, fresh coconut water, cold beers · Burgers, club sandwiches, grilled fish, starters, salads, wraps</span></div>
+        <div class="resto-row"><span class="resto-icon">🌊</span><span class="resto-label">Setting</span><span class="resto-val">Right beside the swimming pool · Loungers available · Best spot for lazy afternoon recovery!</span></div>
+        <div class="resto-row"><span class="resto-icon">💰</span><span class="resto-label">Budget</span><span class="resto-val">₹200–600 for food · Cocktails ₹400–700 · Beer ₹200–350</span></div>
+        <div class="resto-row"><span class="resto-icon">🎯</span><span class="resto-label">Must Try</span><span class="resto-val">Frozen mojito by the pool, Goan fish tikka, coconut shrimp</span></div>
+        <div style="margin-top:6px"><span class="resto-open">🟢 Opens 10:00 AM</span></div>
+        <div style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Resort+Goa+Pool+Bar+Cavelossim" target="_blank" class="btn-map">🗺️ Maps</a></div>
+      </div>
+    </div>
+
+    <!-- WAVES / SUNSET BAR -->
+    <div class="resto-card" style="--accent:var(--sunset)">
+      <div class="resto-header" style="border-left:4px solid var(--sunset)">
+        <div class="resto-name">🌅 Waves — Sunset Lounge &amp; Bar</div>
+        <div class="resto-type">BEACH-FACING BAR · COCKTAILS &amp; LIGHT BITES</div>
+      </div>
+      <div class="resto-body">
+        <div class="resto-row"><span class="resto-icon">🕐</span><span class="resto-label">Hours</span><span class="resto-val"><b style="color:var(--sand2)">4:00 PM – 11:30 PM</b><br/>Evening and night service daily</span></div>
+        <div class="resto-row"><span class="resto-icon">🍸</span><span class="resto-label">Menu</span><span class="resto-val">Signature cocktails, champagne, wines, spirits, tapas, cheese platters, small plates and local Goan snacks</span></div>
+        <div class="resto-row"><span class="resto-icon">🌊</span><span class="resto-label">Setting</span><span class="resto-val">Stunning sea-view terrace facing Mobor Beach · Best sunset watching point in the hotel · Live acoustic music on weekends</span></div>
+        <div class="resto-row"><span class="resto-icon">💰</span><span class="resto-label">Budget</span><span class="resto-val">Cocktails ₹500–900 · Snacks ₹300–700 · Wine ₹600–2,000/bottle</span></div>
+        <div class="resto-row"><span class="resto-icon">🎯</span><span class="resto-label">Must Try</span><span class="resto-val">Mobor Sunset (house cocktail), Goan prawn toast, local Feni-based cocktails</span></div>
+        <div class="resto-row"><span class="resto-icon">⭐</span><span class="resto-label">Pro Tip</span><span class="resto-val">Grab seats at 5:30 PM before sunset crowd arrives — arrive early for the best sunset sea views</span></div>
+        <div style="margin-top:6px"><span class="resto-open" style="--g:#ff8c4218;--gc:#ff8c4240;--gt:#ff8c42">🟠 Opens 4:00 PM</span></div>
+        <div style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Resort+Goa+Beach+Bar+Cavelossim" target="_blank" class="btn-map">🗺️ Maps</a></div>
+      </div>
+    </div>
+
+    <!-- LOBBY LOUNGE & BAR -->
+    <div class="resto-card" style="--accent:var(--purple)">
+      <div class="resto-header" style="border-left:4px solid var(--purple)">
+        <div class="resto-name">🍸 Lobby Lounge &amp; Bar</div>
+        <div class="resto-type">INDOOR BAR · ALL-DAY DRINKS &amp; LIGHT FOOD</div>
+      </div>
+      <div class="resto-body">
+        <div class="resto-row"><span class="resto-icon">🕐</span><span class="resto-label">Hours</span><span class="resto-val"><b style="color:var(--sand2)">11:00 AM – 12:00 Midnight</b><br/>Last orders 11:30 PM</span></div>
+        <div class="resto-row"><span class="resto-icon">🥂</span><span class="resto-label">Menu</span><span class="resto-val">Full bar — spirits, beers, wines, cocktails · Light snacks: sandwiches, samosas, finger food · High tea service 3–5 PM</span></div>
+        <div class="resto-row"><span class="resto-icon">💡</span><span class="resto-label">Great For</span><span class="resto-val">Relaxed afternoon hangouts — air-conditioned, comfortable sofas, board games available at front desk</span></div>
+        <div class="resto-row"><span class="resto-icon">💰</span><span class="resto-label">Budget</span><span class="resto-val">Beers ₹200–300 · Cocktails ₹450–750 · Snacks ₹200–500 · High tea ₹600/person</span></div>
+        <div class="resto-row"><span class="resto-icon">🎯</span><span class="resto-label">Must Try</span><span class="resto-val">Local Kingfisher draught, Goan Feni &amp; tonic, high tea cake selection</span></div>
+        <div style="margin-top:6px"><span class="resto-open" style="--g:#a78bfa18;--gc:#a78bfa40;--gt:#a78bfa">🟣 Opens 11:00 AM</span></div>
+        <div style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Resort+Goa+Lobby+Bar+Cavelossim" target="_blank" class="btn-map">🗺️ Maps</a></div>
+      </div>
+    </div>
+
+    <!-- IN-ROOM DINING -->
+    <div class="resto-card" style="--accent:var(--green)">
+      <div class="resto-header" style="border-left:4px solid var(--green)">
+        <div class="resto-name">🛏️ In-Room Dining</div>
+        <div class="resto-type">24-HOUR ROOM SERVICE · FULL MENU AVAILABLE</div>
+      </div>
+      <div class="resto-body">
+        <div class="resto-row"><span class="resto-icon">🕐</span><span class="resto-label">Hours</span><span class="resto-val"><b style="color:var(--sand2)">24 Hours · 7 Days</b><br/>No minimum order requirement</span></div>
+        <div class="resto-row"><span class="resto-icon">📋</span><span class="resto-label">Menu</span><span class="resto-val">Full Citrus menu available + exclusive room service items. Goan, Indian, Continental, Chinese. Breakfast in bed available!</span></div>
+        <div class="resto-row"><span class="resto-icon">💡</span><span class="resto-label">Great For</span><span class="resto-val">Late night room service — samosas + chai + movie night after a long day of exploring</span></div>
+        <div class="resto-row"><span class="resto-icon">💰</span><span class="resto-label">Budget</span><span class="resto-val">₹300–1,000 + 20% service charge. Worth it for lazy rain days!</span></div>
+        <div class="resto-row"><span class="resto-icon">📞</span><span class="resto-label">Order</span><span class="resto-val">Dial <b style="color:var(--gold)">0</b> from room phone or call <a href="tel:+918326626000" style="color:var(--aqua)">+91 832 662 6000</a></span></div>
+        <div style="margin-top:6px"><span class="resto-open" style="--g:#34d39918;--gc:#34d39940;--gt:#34d399">🟢 24 Hours Always Open</span></div>
+      </div>
+    </div>
+
+    <!-- SPA & WELLNESS -->
+    <div class="resto-card" style="--accent:var(--teal)">
+      <div class="resto-header" style="border-left:4px solid var(--teal)">
+        <div class="resto-name">🧖 Spa &amp; Wellness Centre</div>
+        <div class="resto-type">TREATMENTS · MASSAGES · AYURVEDA</div>
+      </div>
+      <div class="resto-body">
+        <div class="resto-row"><span class="resto-icon">🕐</span><span class="resto-label">Hours</span><span class="resto-val"><b style="color:var(--sand2)">9:00 AM – 9:00 PM Daily</b></span></div>
+        <div class="resto-row"><span class="resto-icon">💆</span><span class="resto-label">Services</span><span class="resto-val">Ayurvedic massage, Swedish, deep tissue, hot stone, couples massage, facials, body wraps, foot reflexology</span></div>
+        <div class="resto-row"><span class="resto-icon">💡</span><span class="resto-label">Great For</span><span class="resto-val"><b style="color:var(--green)">The group needs this!</b> Book couple/group spa packages — Goa ayurvedic treatments are world-class here</span></div>
+        <div class="resto-row"><span class="resto-icon">💰</span><span class="resto-label">Budget</span><span class="resto-val">₹1,500–4,000 per session (60–90 min). Couples package ₹5,000–7,000. Book at front desk.</span></div>
+        <div class="resto-row"><span class="resto-icon">📞</span><span class="resto-label">Book</span><span class="resto-val">Book 24hrs in advance at front desk or call hotel number</span></div>
+        <div style="margin-top:6px"><span class="resto-open">🟢 Opens 9:00 AM</span></div>
+        <div style="margin-top:8px"><a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Resort+Goa+Spa+Cavelossim" target="_blank" class="btn-map">🗺️ Maps</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Dining schedule recommendation -->
+  <div style="background:linear-gradient(135deg,#0d3020,#071828);border:1px solid #1a5030;border-radius:12px;padding:16px;margin-bottom:16px">
+    <div style="font-family:'Playfair Display',serif;font-size:15px;color:var(--gold);font-weight:700;margin-bottom:12px">📅 Recommended 3-Day Dining Plan (Sep 18–20)</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;font-size:11px">
+      <div style="background:#ffffff08;border-radius:8px;padding:10px">
+        <div style="color:var(--aqua);font-weight:700;margin-bottom:6px">Friday Sep 18</div>
+        <div style="color:var(--muted);line-height:1.8">🌅 Breakfast → Citrus (7am)<br/>☀️ Lunch → Blue Pool Bar<br/>🌆 Pre-dinner → Waves Bar (sunset)<br/>🌙 Dinner → Bomra's or Reverie</div>
+      </div>
+      <div style="background:#ffffff08;border-radius:8px;padding:10px">
+        <div style="color:var(--aqua);font-weight:700;margin-bottom:6px">Saturday Sep 19</div>
+        <div style="color:var(--muted);line-height:1.8">🌅 Breakfast → Citrus (7am)<br/>☀️ Lunch → Souza Lobo, Calangute<br/>🛍️ Evening → Saturday Night Market food<br/>🌙 Drinks → Lobby Lounge (late)</div>
+      </div>
+      <div style="background:#ffffff08;border-radius:8px;padding:10px">
+        <div style="color:var(--aqua);font-weight:700;margin-bottom:6px">Sunday Sep 20</div>
+        <div style="color:var(--muted);line-height:1.8">🌅 Breakfast → Citrus (7am)<br/>☀️ Lunch → Citrus (lazy day in rain)<br/>🧖 Afternoon → Spa session!<br/>🌙 Dinner → Room service + movie</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     BEACHES
+══════════════════════════════════════════════ -->
+<div class="section" id="sec-beaches">
+  <div class="sec-head">
+    <div class="sec-title">🏖️ Beaches from Holiday Inn Resort Goa</div>
+    <div class="sec-sub">Distances from Holiday Inn Resort Goa, Cavelossim (South Goa) · Tap any card for Google Maps</div>
+  </div>
+
+  <div class="sea-advisory">
+    <div style="font-family:'Playfair Display',serif;font-size:14px;color:var(--coral);margin-bottom:8px;font-weight:700">⚠️ September Sea Advisory</div>
+    <div style="font-size:11px;color:var(--muted);line-height:1.6">Always check the beach flag before swimming. <b style="color:var(--sand2)">Do not swim if the red flag is raised — enforced by lifeguards.</b> Green flag = safe to swim. Yellow = caution. Red = no swimming. Hotel pool is always a safe option.</div>
+  </div>
+
+  <div class="cards">
+    <div class="card" style="--accent:var(--green)">
+      <span class="card-emoji">🏖️</span>
+      <div class="card-name">Mobor Beach</div>
+      <div class="card-dist">📍 0.2 km · 3-min walk</div>
+      <div class="card-tags"><span class="tag" style="background:#34d39920;color:var(--green)">YOUR DOORSTEP</span><span class="tag" style="background:#0e9aa720;color:var(--teal)">WALKABLE</span></div>
+      <div class="card-desc">Your resort sits right on Mobor Beach — a long, clean and peaceful stretch at the tip of Cavelossim. Calm waters, golden sand, beach shacks serving fresh seafood. Perfect for morning walks and sunsets.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Mobor+Beach+Cavelossim+South+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--aqua)">
+      <span class="card-emoji">🌊</span>
+      <div class="card-name">Benaulim Beach</div>
+      <div class="card-dist">📍 8 km · 15-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#3fc1c020;color:var(--aqua)">PEACEFUL</span><span class="tag" style="background:#34d39920;color:var(--green)">CLEAN</span></div>
+      <div class="card-desc">One of South Goa's best beaches — wide, clean, with gentle surf and very few crowds. Excellent beach shacks, fresh coconuts and great sunsets. Johnny's shack is a South Goa legend.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Benaulim+Beach+South+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--gold)">
+      <span class="card-emoji">⛪</span>
+      <div class="card-name">Colva Beach</div>
+      <div class="card-dist">📍 12 km · 20-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--amber)">LIVELY</span><span class="tag" style="background:#f4623a20;color:var(--coral)">WATER SPORTS</span></div>
+      <div class="card-desc">South Goa's most popular and lively beach. Long stretch with beach shacks, water sports, volleyball and a buzzing promenade. Lequim and Lucky Star shacks are worth a visit. Great for evenings.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Colva+Beach+South+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--coral)">
+      <span class="card-emoji">🌴</span>
+      <div class="card-name">Palolem Beach</div>
+      <div class="card-dist">📍 35 km · 45-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#f4623a20;color:var(--coral)">MUST VISIT</span><span class="tag" style="background:#34d39920;color:var(--green)">CRESCENT PARADISE</span></div>
+      <div class="card-desc">Goa's most beautiful crescent beach — just 45 mins from your resort! Calm lagoon, colourful huts, kayaking and dolphin boat trips. One of India's finest beaches. Plan a full half-day here.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Palolem+Beach+South+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--purple)">
+      <span class="card-emoji">🏝️</span>
+      <div class="card-name">Agonda Beach</div>
+      <div class="card-dist">📍 28 km · 38-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#a78bfa20;color:var(--purple)">PRISTINE</span><span class="tag" style="background:#0e9aa720;color:var(--teal)">TURTLE NESTING</span></div>
+      <div class="card-desc">One of Goa's most unspoiled and serene beaches. Protected turtle nesting site — stunning and crowd-free. Bohemian cafés and yoga retreats line the shore. Perfect for a peaceful morning escape.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Agonda+Beach+South+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--sunset)">
+      <span class="card-emoji">🎉</span>
+      <div class="card-name">Baga & Calangute (North Goa)</div>
+      <div class="card-dist">📍 55 km · 75-min drive</div>
+      <div class="card-tags"><span class="tag" style="background:#ff8c4220;color:var(--sunset)">NIGHTLIFE</span><span class="tag" style="background:#f4a22820;color:var(--amber)">FULL DAY TRIP</span></div>
+      <div class="card-desc">Worth the drive for a full North Goa day — Calangute, Baga, Anjuna and Chapora Fort all in one sweep. Hire a car with driver (₹2,500–3,500). Britto's, Tito's, Saturday Night Market if it's Saturday!</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Baga+Beach+North+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--amber)">
+      <span class="card-emoji">🌅</span>
+      <div class="card-name">Butterfly Beach</div>
+      <div class="card-dist">📍 40 km · 55-min drive + boat</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--amber)">HIDDEN GEM</span><span class="tag" style="background:#34d39920;color:var(--green)">BOAT ACCESS</span></div>
+      <div class="card-desc">Goa's secret beach — only accessible by a short boat from Palolem (₹200 return). Tiny, secluded and incredibly beautiful horseshoe cove. Combine with a Palolem visit for a perfect beach day.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Butterfly+Beach+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SIGHTSEEING
+══════════════════════════════════════════════ -->
+<div class="section" id="sec-sights">
+  <div class="sec-head">
+    <div class="sec-title">🗺️ Sightseeing from Holiday Inn Resort Goa</div>
+    <div class="sec-sub">All distances from Cavelossim, South Goa · Sorted by distance</div>
+  </div>
+
+  <div class="cards">
+    <div class="card" style="--accent:var(--amber)">
+      <span class="card-emoji">🏰</span>
+      <div class="card-name">Fort Aguada</div>
+      <div class="card-dist">📍 3 km · 10 min</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--amber)">17TH CENTURY</span><span class="tag" style="background:#34d39920;color:var(--green)">FREE ENTRY</span><span class="tag" style="background:#0e9aa720;color:var(--teal)">MUST VISIT</span></div>
+      <div class="card-desc">Portuguese fort built in 1612, UNESCO-listed. Dramatic in September — moody skies, crashing waves below, lush green hills. The lighthouse view is stunning. Free entry. 9am–6pm. Half-day trip.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Fort+Aguada+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--purple)">
+      <span class="card-emoji">🏯</span>
+      <div class="card-name">Chapora Fort</div>
+      <div class="card-dist">📍 13 km · 28 min</div>
+      <div class="card-tags"><span class="tag" style="background:#a78bfa20;color:var(--purple)">DIL CHAHTA HAI</span><span class="tag" style="background:#34d39920;color:var(--green)">FREE</span></div>
+      <div class="card-desc">Iconic Bollywood fort overlooking Vagator and Chapora River. Views are absolutely jaw-dropping — sweeping panoramas over Vagator and Chapora River. Free entry, open sunrise–sunset. Hire scooter to reach.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Chapora+Fort+Goa+15.6029,73.7379" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--aqua)">
+      <span class="card-emoji">🏛️</span>
+      <div class="card-name">Panaji City &amp; Fontainhas</div>
+      <div class="card-dist">📍 13 km · 25 min</div>
+      <div class="card-tags"><span class="tag" style="background:#3fc1c020;color:var(--aqua)">CAPITAL CITY</span><span class="tag" style="background:#f4a22820;color:var(--amber)">HERITAGE WALK</span></div>
+      <div class="card-desc">Goa's capital has the prettiest Latin Quarter in India. Fontainhas' colourful Portuguese houses are stunning — vivid colours, narrow lanes and local bakeries. Church of Immaculate Conception is iconic. Combine with a riverside café stop.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Fontainhas+Latin+Quarter+Panaji+Goa+15.4989,73.8278" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--coral)">
+      <span class="card-emoji">⛪</span>
+      <div class="card-name">Basilica of Bom Jesus</div>
+      <div class="card-dist">📍 18 km · 35 min</div>
+      <div class="card-tags"><span class="tag" style="background:#f4623a20;color:var(--coral)">UNESCO HERITAGE</span><span class="tag" style="background:#f4a22820;color:var(--amber)">MUST SEE</span></div>
+      <div class="card-desc">Built in 1605. Houses tomb of St Francis Xavier. Extraordinary Baroque facade. Combine with nearby Sé Cathedral (largest in Asia) and Archaeological Museum in same complex. 9am–6:30pm, closed Sunday morning.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Basilica+of+Bom+Jesus+Old+Goa+15.5009,73.9114" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--amber)">
+      <span class="card-emoji">🎨</span>
+      <div class="card-name">Saturday Night Market (Sep 19!)</div>
+      <div class="card-dist">📍 6 km · 15 min · Sep 19 is Saturday!</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--amber)">YOUR DATE IS A SATURDAY!</span><span class="tag" style="background:#34d39920;color:var(--green)">MUST DO</span></div>
+      <div class="card-desc">Incredible luck — September 19th is a Saturday! Arpora/Ingo's Night Market: 300+ stalls, fire dancers, live music, global street food, jewellery, clothes. Rain or shine, 6pm–midnight. This is the highlight of your trip!</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Ingo+Saturday+Night+Market+Arpora+Goa+15.5548,73.7620" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--green)">
+      <span class="card-emoji">🌿</span>
+      <div class="card-name">Tropical Spice Plantation</div>
+      <div class="card-dist">📍 35 km · 50 min</div>
+      <div class="card-tags"><span class="tag" style="background:#34d399220;color:var(--green)">LUSH &amp; GREEN</span><span class="tag" style="background:#f4a22820;color:var(--amber)">LUNCH INCLUDED</span></div>
+      <div class="card-desc">Guided 90-min tour through spice groves — cardamom, pepper, vanilla, nutmeg. Authentic Goan lunch on banana leaf. Book in advance. ₹600–900/person. 10am–3pm tours.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Tropical+Spice+Plantation+Keri+Goa+15.4447,73.9866" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--teal)">
+      <span class="card-emoji">🐬</span>
+      <div class="card-name">Dolphin Watching Cruise</div>
+      <div class="card-dist">📍 0.5 km · Mobor Beach</div>
+      <div class="card-tags"><span class="tag" style="background:#0e9aa720;color:var(--teal)">MORNING 7AM</span><span class="tag" style="background:#f4a22820;color:var(--amber)">₹400/PERSON</span></div>
+      <div class="card-desc">Dolphin sightings are more frequent in September — calmer early mornings before rain. Book with operators on Mobor Beach directly. 7–8:30am recommended. Near-guaranteed sightings from Cavelossim waters!</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Mobor+Beach+Boat+Trips+Cavelossim+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--gold)">
+      <span class="card-emoji">🎰</span>
+      <div class="card-name">Casino Night (Panaji)</div>
+      <div class="card-dist">📍 12 km · 25 min</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--gold)">GREAT FOR RAIN NIGHTS</span><span class="tag" style="background:#a78bfa20;color:var(--purple)">24x7</span></div>
+      <div class="card-desc">Delta Royale, Casino Pride and Carnival on Mandovi River. Perfect group night out — indoor entertainment, live shows. Entry ₹1,500–2,500 with chips + unlimited food/drinks. Book group rates ahead.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Delta+Royale+Casino+Panaji+Mandovi+River+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     RESTAURANTS OUTSIDE
+══════════════════════════════════════════════ -->
+<div class="section" id="sec-food">
+  <div class="sec-head">
+    <div class="sec-title">🍜 Best Restaurants Near Holiday Inn Resort Goa</div>
+    <div class="sec-sub">Top-rated picks near Cavelossim & South Goa · All with Google Maps links · Prices for guidance</div>
+  </div>
+
+  <div class="cards">
+    <div class="card" style="--accent:var(--coral)">
+      <span class="card-emoji">🦀</span>
+      <div class="card-name">Bomra's</div>
+      <div class="card-dist">📍 1.2 km · 5-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#f4623a20;color:var(--coral)">BURMESE-GOAN FUSION</span><span class="tag" style="background:#f4a22820;color:var(--amber)">#1 CANDOLIM</span></div>
+      <div class="card-desc">Goa's most celebrated restaurant. Naga chilli lobster, Burmese tea leaf salad, prawn curry — each dish is an event. Garden setting, atmospheric. <b style="color:var(--gold)">Book 2 days ahead minimum for Sep.</b> Evenings only, closed Mon.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Bomra's+Restaurant+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--sunset)">
+      <span class="card-emoji">🍤</span>
+      <div class="card-name">A Reverie</div>
+      <div class="card-dist">📍 1.5 km · 5-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#ff8c4220;color:var(--sunset)">FINE DINING</span><span class="tag" style="background:#a78bfa20;color:var(--purple)">ROOFTOP GARDEN</span></div>
+      <div class="card-desc">Fairy-lit garden restaurant with eclectic global menu. Beautiful cocktails — try the Reverie Mule. Great for a group dinner. The rooftop partially covered — good for September. ₹1,200–1,800/head.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=A+Reverie+Restaurant+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--gold)">
+      <span class="card-emoji">🐟</span>
+      <div class="card-name">Souza Lobo</div>
+      <div class="card-dist">📍 2.5 km · 8-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--gold)">ICONIC SINCE 1932</span><span class="tag" style="background:#34d39920;color:var(--green)">OPEN IN SEP</span></div>
+      <div class="card-desc">Goa's most iconic restaurant since 1932. Fish curry rice, crab xacuti, bebinca — all legendary. Beachside tables with ocean views. Perfect lunch spot post-Calangute beach walk. ₹700–1,200/head.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Souza+Lobo+Restaurant+Calangute+Beach+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--aqua)">
+      <span class="card-emoji">☕</span>
+      <div class="card-name">Infantaria Café</div>
+      <div class="card-dist">📍 3 km · 10-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#3fc1c020;color:var(--aqua)">BEST BREAKFAST IN GOA</span></div>
+      <div class="card-desc">Legendary bakery-café. Goan sausage eggs, croissants, local cakes. Queue forms by 8:30am — arrive early! Also doubles as a great café for lazy afternoon coffee and pastries. ₹200–400/head.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Infantaria+Cafe+Calangute+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--amber)">
+      <span class="card-emoji">🎸</span>
+      <div class="card-name">Britto's</div>
+      <div class="card-dist">📍 4 km · 12-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--amber)">SINCE 1962</span><span class="tag" style="background:#f4623a20;color:var(--coral)">LIVE MUSIC</span><span class="tag" style="background:#34d39920;color:var(--green)">OPEN ALL YEAR</span></div>
+      <div class="card-desc">Baga beach institution. Massive covered outdoor seating — perfect for September. Live music every night, huge seafood menu, great Kingfisher on tap. Perfect for large group dinners. ₹700–1,200/head.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Britto's+Restaurant+Baga+Beach+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--purple)">
+      <span class="card-emoji">🏛️</span>
+      <div class="card-name">Thalassa</div>
+      <div class="card-dist">📍 12 km · 25-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#a78bfa20;color:var(--purple)">GREEK CLIFF-TOP</span><span class="tag" style="background:#f4a22820;color:var(--amber)">BOOK AHEAD</span></div>
+      <div class="card-desc">Perched on Vagator cliff with breathtaking sea views. Sunsets from here are ethereal. Authentic Greek — moussaka, souvlaki, great wines. Partially covered — open in rain. <b style="color:var(--gold)">Book 3 days ahead.</b> ₹2,000+/head.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Thalassa+Greek+Restaurant+Vagator+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--sunset)">
+      <span class="card-emoji">🍲</span>
+      <div class="card-name">Gunpowder</div>
+      <div class="card-dist">📍 10 km · 22-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#ff8c4220;color:var(--sunset)">SOUTH INDIAN</span><span class="tag" style="background:#0e9aa720;color:var(--teal)">ASSAGAO</span></div>
+      <div class="card-desc">Heritage house restaurant in Assagao village. Chettinad mutton, Kerala fish curry, appam. Beautiful lush garden setting. Small, intimate. Book ahead. ₹800–1,200/head.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Gunpowder+Restaurant+Assagao+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--teal)">
+      <span class="card-emoji">🍺</span>
+      <div class="card-name">Fisherman's Wharf</div>
+      <div class="card-dist">📍 2.5 km · 8-min ride</div>
+      <div class="card-tags"><span class="tag" style="background:#0e9aa720;color:var(--teal)">RIVERSIDE</span><span class="tag" style="background:#f4a22820;color:var(--amber)">FRESH SEAFOOD</span></div>
+      <div class="card-desc">Riverside seafood spot with covered seating. Goan crab, lobster, kingfish — all fresh. Good wine list. Relaxed atmosphere great for lazy lunches. Great for long relaxed lunches. ₹800–1,500/head.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Fisherman's+Wharf+Restaurant+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--green)">
+      <span class="card-emoji">🍹</span>
+      <div class="card-name">Pousada by the Beach</div>
+      <div class="card-dist">📍 0.4 km · 2-min walk</div>
+      <div class="card-tags"><span class="tag" style="background:#34d39920;color:var(--green)">WALKABLE</span><span class="tag" style="background:#f4a22820;color:var(--amber)">GOAN CLASSICS</span></div>
+      <div class="card-desc">Charming heritage property restaurant walkable from the hotel. Authentic Goan home cooking — Rachel's prawn curry is legendary. Small, cosy, covered veranda. Great alternative to hotel dining for lunch. ₹600–1,000/head.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Pousada+by+the+Beach+Cavelossim+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+  </div>
+
+  <div class="tips" style="background:linear-gradient(135deg,#0d1a10,#071828);border:1px solid #1a5030">
+    <div class="tips-title" style="color:var(--green)">🍽️ September Dining Tips</div>
+    <div class="tips-grid">
+      <div class="tip" style="color:#2a6040">✅ Many beach shacks closed in Sep — hotel restaurants are reliable fallbacks</div>
+      <div class="tip" style="color:#2a6040">✅ Pre-book Thalassa, Bomra's, Gunpowder for Sep 19 (Saturday) — gets full</div>
+      <div class="tip" style="color:#2a6040">✅ Britto's &amp; Souza Lobo don't take reservations — arrive before 7:30pm</div>
+      <div class="tip" style="color:#2a6040">✅ Saturday Night Market food stalls are open even in rain — excellent street food</div>
+      <div class="tip" style="color:#2a6040">✅ Must-try Goan dishes: fish curry rice, prawn balchao, pork vindaloo, bebinca</div>
+      <div class="tip" style="color:#2a6040">✅ Try local Feni (cashew spirit) — the Goa experience is incomplete without it</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SHOPPING
+══════════════════════════════════════════════ -->
+<div class="section" id="sec-shopping">
+  <div class="sec-head">
+    <div class="sec-title">🛍️ Shopping Near Holiday Inn Resort Goa</div>
+    <div class="sec-sub">Markets, malls &amp; boutiques · Tap any card for Google Maps</div>
+  </div>
+
+  <div class="cards">
+    <div class="card" style="--accent:var(--amber)">
+      <span class="card-emoji">🌙</span>
+      <div class="card-name">Arpora Saturday Night Market</div>
+      <div class="card-dist">📍 6 km · 15 min · SEP 19 IS SATURDAY!</div>
+      <div class="card-tags"><span class="tag" style="background:#f4623a20;color:var(--coral)">YOUR NIGHT — SEP 19!</span><span class="tag" style="background:#f4a22820;color:var(--amber)">6PM–MIDNIGHT</span></div>
+      <div class="card-desc">300+ stalls, live bands, fire performers, food from 20 countries. Perfect Saturday night plan — even in September rain it runs! Best shopping in all of Goa. Budget ₹2,000–5,000 per person. Take auto or cab — parking is chaos.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Ingo+Saturday+Night+Market+Arpora+Goa+15.5548,73.7620" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--coral)">
+      <span class="card-emoji">🌺</span>
+      <div class="card-name">Anjuna Wednesday Flea Market</div>
+      <div class="card-dist">📍 9 km · 20 min · Sep 16 &amp; 23 (before/after your trip)</div>
+      <div class="card-tags"><span class="tag" style="background:#f4623a20;color:var(--coral)">WEDNESDAY ONLY</span><span class="tag" style="background:#0e9aa720;color:var(--teal)">HIPPIE MARKET</span></div>
+      <div class="card-desc">Won't fall during your exact dates but worth a day trip if arriving early. Tibetan handicrafts, Rajasthani textiles, silver jewellery, tie-dye. Since 1960s. 8am–sunset. Vendors set up rain or shine in tented stalls.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Anjuna+Flea+Market+Goa+15.5762,73.7431" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--purple)">
+      <span class="card-emoji">🏬</span>
+      <div class="card-name">Mall de Goa</div>
+      <div class="card-dist">📍 6 km · 15 min</div>
+      <div class="card-tags"><span class="tag" style="background:#a78bfa20;color:var(--purple)">AIR-CONDITIONED</span><span class="tag" style="background:#34d39920;color:var(--green)">RAINY DAY ESCAPE</span></div>
+      <div class="card-desc">Goa's largest mall — 100+ brands (Zara, H&amp;M, Westside, FabIndia). Multiplex cinema, good food court. <b style="color:var(--gold)">Great afternoon option</b> to browse brands and catch a movie. Open 10am–10pm daily.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Mall+de+Goa+Porvorim+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--gold)">
+      <span class="card-emoji">🌶️</span>
+      <div class="card-name">Calangute Market &amp; Souvenir Shops</div>
+      <div class="card-dist">📍 2 km · 8 min</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--amber)">DAILY OPEN</span><span class="tag" style="background:#34d39920;color:var(--green)">SOUVENIRS</span></div>
+      <div class="card-desc">Hundreds of souvenir stalls along Calangute main road. Goa fridge magnets, cashew in every flavour, batik shirts, shell jewellery. Open 9am–11pm. Best for budget gifts to take home. Bargain hard.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Calangute+Market+Square+Goa+15.5440,73.7554" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--teal)">
+      <span class="card-emoji">📚</span>
+      <div class="card-name">Literati Bookshop &amp; Café</div>
+      <div class="card-dist">📍 0.8 km · 3-min walk</div>
+      <div class="card-tags"><span class="tag" style="background:#0e9aa720;color:var(--teal)">WALKABLE GEM</span><span class="tag" style="background:#a78bfa20;color:var(--purple)">RAINY DAY PERFECT</span></div>
+      <div class="card-desc">Head to Margao or Panjim for well-stocked bookshops. Closer by, the Cavelossim village shops carry local Goa literature and travel books. A calm way to spend a slow afternoon.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Bookshop+Margao+South+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--green)">
+      <span class="card-emoji">🥜</span>
+      <div class="card-name">Goa Cashews &amp; Spices (Margao Market)</div>
+      <div class="card-dist">📍 0.5 km · Walkable</div>
+      <div class="card-tags"><span class="tag" style="background:#34d39920;color:var(--green)">WALKABLE</span><span class="tag" style="background:#f4a22820;color:var(--amber)">BEST GIFTS</span></div>
+      <div class="card-desc">Margao Municipal Market and Cavelossim shops sell the best roasted cashews, spice mixes, Feni bottles and kokum. Cheaper than any airport. Buy in bulk for the group — great discounts.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Cashews+Spices+Margao+Market+South+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     ACTIVITIES
+══════════════════════════════════════════════ -->
+<div class="section" id="sec-activities">
+  <div class="sec-head">
+    <div class="sec-title">🎯 Activities &amp; Experiences</div>
+    <div class="sec-sub">Top picks for the group · Click any card to open Google Maps</div>
+  </div>
+
+  <div class="cards">
+    <div class="card" style="--accent:var(--amber)">
+      <span class="card-emoji">🌙</span>
+      <div class="card-name">Saturday Night Market (Sep 19)</div>
+      <div class="card-dist">📍 6 km · Sep 19 IS SATURDAY!</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--amber)">GROUP NIGHT OUT</span><span class="tag" style="background:#34d39920;color:var(--green)">ALL WEATHER</span></div>
+      <div class="card-desc">Your group's best night together — 300+ stalls, fire shows, live bands, food from every corner of the world, dancing. Even in heavy rain the market runs with large tented sections. Plan 4–5 hours here minimum.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Ingo+Saturday+Night+Market+Arpora+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--gold)">
+      <span class="card-emoji">🎰</span>
+      <div class="card-name">Casino Night (Sep 19 or 20)</div>
+      <div class="card-dist">📍 12 km · Mandovi River, Panaji</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--gold)">INDOOR ACTIVITY</span><span class="tag" style="background:#a78bfa20;color:var(--purple)">PERFECT FOR RAIN</span></div>
+      <div class="card-desc">Delta Royale or Casino Pride — fully indoor floating casinos. Entry ₹1,500–2,500 includes chips + unlimited food/drinks. Book group package for better rates. 24x7 — combine with sunset river cruise for full evening out.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Delta+Royale+Casino+Mandovi+River+Panaji+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--teal)">
+      <span class="card-emoji">🐬</span>
+      <div class="card-name">Dolphin Watching Sunrise Trip</div>
+      <div class="card-dist">📍 0.5 km · Mobor Beach jetty</div>
+      <div class="card-tags"><span class="tag" style="background:#0e9aa720;color:var(--teal)">7AM DEPARTURE</span><span class="tag" style="background:#34d39920;color:var(--green)">₹400/PERSON</span></div>
+      <div class="card-desc">Early mornings before rain are calm and clear. Dolphins are more active and frequently spotted in September. 90-minute boat trip, near-guaranteed sightings. Book on beach evening before. Bring rain jacket just in case.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Mobor+Beach+Cavelossim+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--aqua)">
+      <span class="card-emoji">🌅</span>
+      <div class="card-name">Mandovi Sunset River Cruise</div>
+      <div class="card-dist">📍 13 km · Panaji Jetty</div>
+      <div class="card-tags"><span class="tag" style="background:#3fc1c020;color:var(--aqua)">6:15PM DEPARTURE</span><span class="tag" style="background:#f4a22820;color:var(--amber)">₹500/PERSON</span></div>
+      <div class="card-desc">1.5-hour cruise with live Konkani folk music, dance performances, drinks on board. Even in September, river cruises operate daily (sea cruises may not). Book at Panaji jetty or hotel front desk. Pairs perfectly with casino night after.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Panaji+Jetty+River+Cruise+Goa+15.4989,73.8278" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--purple)">
+      <span class="card-emoji">🧖</span>
+      <div class="card-name">Ayurveda Spa at Hotel</div>
+      <div class="card-dist">📍 Inside Holiday Inn Resort</div>
+      <div class="card-tags"><span class="tag" style="background:#a78bfa20;color:var(--purple)">DEEPLY RELAXING</span><span class="tag" style="background:#34d39920;color:var(--green)">IN-HOTEL</span></div>
+      <div class="card-desc">Goa is famous for authentic Ayurveda — one of the best places in India for treatments. Book Abhyanga (oil massage), Shirodhara, couples massage. 9am–9pm. Book at front desk at least 1 day ahead. ₹1,500–4,000/session.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Holiday+Inn+Resort+Goa+Spa+Cavelossim" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--sunset)">
+      <span class="card-emoji">🏍️</span>
+      <div class="card-name">South Goa Scooter Trail</div>
+      <div class="card-dist">📍 Full South Goa loop</div>
+      <div class="card-tags"><span class="tag" style="background:#ff8c4220;color:var(--sunset)">BEST ON DRY MORNING</span><span class="tag" style="background:#f4623a20;color:var(--coral)">FULL DAY</span></div>
+      <div class="card-desc">Rent scooters (₹300–500/day) and do the classic South Goa trail. Route: Cavelossim → Colva Beach → Margao → Palolem → Agonda → back. About 60km of stunning South Goa coastline. Helmets mandatory.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Scooter+Rental+Cavelossim+Goa" target="_blank" class="btn">🗺️ Open Google Maps</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     TRANSPORT
+══════════════════════════════════════════════ -->
+<div class="section" id="sec-transport">
+  <div class="sec-head">
+    <div class="sec-title">🛺 Getting Around Goa</div>
+    <div class="sec-sub">All options from Holiday Inn Resort Goa, Cavelossim · Prices as of 2025–26 · Always negotiate</div>
+  </div>
+
+  <div class="transport-grid">
+    <!-- Scooter Rental -->
+    <div class="transport-card">
+      <div style="font-size:26px;margin-bottom:8px">🛵</div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px">Scooter Rental</div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.7">
+        ₹300–500/day · Activa, Jupiter<br/>
+        Petrol station 0.8km from hotel<br/>
+        <b style="color:var(--gold)">🪖 Helmet mandatory — ₹2,000 fine</b><br/>
+        ⚠️ Sept roads can be slippery in rain<br/>
+        Multiple rental shops on main road
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+        <a href="https://www.google.com/maps/search/?api=1&query=Scooter+Rental+Cavelossim+Goa" target="_blank" class="btn-map">🗺️ Find Shops Near Hotel</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Petrol+Station+Cavelossim+Goa" target="_blank" class="btn-map" style="background:#f4a22820;border-color:#f4a22840;color:var(--gold)">⛽ Nearest Petrol</a>
+      </div>
+    </div>
+
+    <!-- Goa Miles -->
+    <div class="transport-card">
+      <div style="font-size:26px;margin-bottom:8px">📱</div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px">Goa Miles App</div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.7">
+        Official Goa govt taxi app<br/>
+        Fully metered · No bargaining<br/>
+        Available 24x7 · English drivers<br/>
+        <b style="color:var(--gold)">Best for late nights &amp; long trips</b><br/>
+        Airport to hotel: ~₹600–800
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+        <a href="https://play.google.com/store/apps/details?id=com.goamiles.driver" target="_blank" class="btn-map">🤖 Android App</a>
+        <a href="https://apps.apple.com/in/app/goa-miles/id1436691077" target="_blank" class="btn-map" style="background:#3fc1c020;border-color:#3fc1c040;color:var(--aqua)">🍎 iPhone App</a>
+      </div>
+    </div>
+
+    <!-- Local Taxi -->
+    <div class="transport-card">
+      <div style="font-size:26px;margin-bottom:8px">🚕</div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px">Local Taxi / Auto</div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.7">
+        Negotiate BEFORE you board<br/>
+        Cavelossim → Palolem: ₹250–350<br/>
+        Cavelossim → Margao: ₹150–200<br/>
+        Cavelossim → Panaji: ₹600–700<br/>
+        Cavelossim → North Goa: ₹700–900
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+        <a href="tel:+918326626000" class="btn-map">📞 Ask Hotel Front Desk</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=taxi+stand+Cavelossim+South+Goa" target="_blank" class="btn-map" style="background:#f4a22820;border-color:#f4a22840;color:var(--gold)">🗺️ Taxi Stand</a>
+      </div>
+    </div>
+
+    <!-- Car with Driver -->
+    <div class="transport-card">
+      <div style="font-size:26px;margin-bottom:8px">🚗</div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px">Car with Driver</div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.7">
+        ₹2,000–3,500 for full day (8hr)<br/>
+        <b style="color:var(--gold)">Best for Dudhsagar &amp; South Goa</b><br/>
+        Hotel can arrange at front desk<br/>
+        AC car, English-speaking driver<br/>
+        Split across group — very affordable
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+        <a href="tel:+918326626000" class="btn-map">📞 Book via Hotel</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=cab+rental+Cavelossim+South+Goa" target="_blank" class="btn-map" style="background:#a78bfa20;border-color:#a78bfa40;color:#a78bfa">🗺️ Find Operators</a>
+      </div>
+    </div>
+
+    <!-- Airport Transfer -->
+    <div class="transport-card">
+      <div style="font-size:26px;margin-bottom:8px">✈️</div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px">Airport Transfer</div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.7">
+        Dabolim (GOI): 18km · ~25min · ₹400<br/>
+        Manohar (GOX): 52km · ~70min · ₹900<br/>
+        Pre-book cab or hotel shuttle<br/>
+        <b style="color:var(--gold)">Hotel shuttle — ask front desk</b>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+        <a href="https://www.google.com/maps/dir/?api=1&origin=Holiday+Inn+Resort+Goa+Cavelossim&destination=Manohar+Goa+International+Airport" target="_blank" class="btn-map">🗺️ To Manohar (GOX)</a>
+        <a href="https://www.google.com/maps/dir/?api=1&origin=Holiday+Inn+Resort+Goa+Cavelossim&destination=Goa+Airport+Dabolim" target="_blank" class="btn-map" style="background:#f4a22820;border-color:#f4a22840;color:var(--gold)">🗺️ To Dabolim (GOI)</a>
+      </div>
+    </div>
+
+    <!-- Ferry -->
+    <div class="transport-card">
+      <div style="font-size:26px;margin-bottom:8px">⛴️</div>
+      <div style="font-family:'Playfair Display',serif;font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px">Ferry (Panaji)</div>
+      <div style="font-size:10px;color:var(--muted);line-height:1.7">
+        Panaji–Betim ferry: Free, frequent<br/>
+        Crosses Mandovi River in 5 min<br/>
+        Runs all day · Great experience<br/>
+        Also ferries to Divar Island<br/>
+        <b style="color:var(--gold)">Iconic Goa moment — try it!</b>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
+        <a href="https://www.google.com/maps/search/?api=1&query=Panaji+Ferry+Wharf+Goa" target="_blank" class="btn-map">🗺️ Panaji Ferry Wharf</a>
+        <a href="https://www.google.com/maps/dir/?api=1&origin=Holiday+Inn+Resort+Goa+Cavelossim&destination=Panaji+Ferry+Wharf+Goa" target="_blank" class="btn-map" style="background:#3fc1c020;border-color:#3fc1c040;color:var(--aqua)">🗺️ Directions</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips" style="background:linear-gradient(135deg,#0d1a10,#071828);border:1px solid #1a5030">
+    <div class="tips-title" style="color:var(--green)">🛵 Getting Around — Key Tips</div>
+    <div class="tips-grid">
+      <div class="tip" style="color:#2a6040">✅ Keep your driving licence on you — traffic police are active on main roads</div>
+      <div class="tip" style="color:#2a6040">✅ Ride scooters in the morning — roads are quieter and cooler early in the day</div>
+      <div class="tip" style="color:#2a6040">✅ Always carry your driving licence — traffic police active on Calangute road</div>
+      <div class="tip" style="color:#2a6040">✅ Google Maps works well in Goa — download offline map of South Goa before arriving</div>
+      <div class="tip" style="color:#2a6040">✅ For casino &amp; late nights, book a Goa Miles cab in advance — surges after midnight</div>
+      <div class="tip" style="color:#2a6040">✅ Hotel front desk is brilliant for arranging full-day cars — more reliable than street taxis</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     EMERGENCY
+══════════════════════════════════════════════ -->
+<div class="section" id="sec-emergency">
+  <div class="sec-head">
+    <div class="sec-title" style="color:var(--coral)">🚑 Emergency Information</div>
+    <div class="sec-sub">Screenshot this page · Share with every group member · Save these numbers NOW</div>
+  </div>
+
+  <!-- SOS -->
+  <div class="emer-grid">
+    <div class="emer-card" style="border-color:#f4623a44">
+      <div class="emer-ico">🚑</div>
+      <div class="emer-lbl">Ambulance</div>
+      <div class="emer-num" style="color:var(--coral)">108</div>
+      <div class="emer-sub">Free · 24x7 · All Goa</div>
+      <a href="tel:108" class="emer-call" style="background:var(--coral)">📞 Call 108</a>
+    </div>
+    <div class="emer-card" style="border-color:#4a8fff44">
+      <div class="emer-ico">👮</div>
+      <div class="emer-lbl">Police</div>
+      <div class="emer-num" style="color:#4a8fff">100</div>
+      <div class="emer-sub">24x7 · All India</div>
+      <a href="tel:100" class="emer-call" style="background:#2255cc">📞 Call 100</a>
+    </div>
+    <div class="emer-card" style="border-color:#ff880044">
+      <div class="emer-ico">🔥</div>
+      <div class="emer-lbl">Fire Brigade</div>
+      <div class="emer-num" style="color:#ff8800">101</div>
+      <div class="emer-sub">Emergency</div>
+      <a href="tel:101" class="emer-call" style="background:#cc5500">📞 Call 101</a>
+    </div>
+    <div class="emer-card" style="border-color:#00aa8844">
+      <div class="emer-ico">🏥</div>
+      <div class="emer-lbl">Tourist Helpline</div>
+      <div class="emer-num" style="color:#00bb88">1364</div>
+      <div class="emer-sub">Govt Goa · English</div>
+      <a href="tel:1364" class="emer-call" style="background:#008866">📞 Call 1364</a>
+    </div>
+    <div class="emer-card" style="border-color:#8855ff44">
+      <div class="emer-ico">🌊</div>
+      <div class="emer-lbl">Coast Guard</div>
+      <div class="emer-num" style="color:#9966ff">1554</div>
+      <div class="emer-sub">Sea emergencies</div>
+      <a href="tel:1554" class="emer-call" style="background:#6633cc">📞 Call 1554</a>
+    </div>
+    <div class="emer-card" style="border-color:#f4a22844">
+      <div class="emer-ico">🏨</div>
+      <div class="emer-lbl">Holiday Inn 24x7</div>
+      <div class="emer-num" style="color:var(--gold);font-size:15px">+91 832 662 6000</div>
+      <div class="emer-sub">Your hotel · Always</div>
+      <a href="tel:+918326626000" class="emer-call" style="background:#b07800">📞 Call Hotel</a>
+    </div>
+  </div>
+
+  <!-- Hospitals -->
+  <div class="sec-head"><div class="sec-title" style="font-size:16px">🏥 Hospitals — Nearest to Holiday Inn</div></div>
+  <div class="cards">
+    <div class="card" style="--accent:var(--coral)">
+      <span class="card-emoji">🏥</span>
+      <div class="card-name">Apollo Victor Hospital</div>
+      <div class="card-dist">📍 6 km · Margao · 12 min</div>
+      <div class="card-tags"><span class="tag" style="background:#f4623a20;color:var(--coral)">NEAREST</span><span class="tag" style="background:#34d39920;color:var(--green)">24x7 EMERGENCY</span></div>
+      <div class="card-desc">Closest hospital to Holiday Inn. 24x7 emergency, casualty ward, general medicine. Good for food poisoning, sunstroke, fever, minor injuries — most common tourist ailments.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <a href="tel:+918322279991" class="btn">📞 +91 832 2705000</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Apollo+Victor+Hospital+Margao+Goa" target="_blank" class="btn btn-ghost">🗺️ Maps</a>
+      </div>
+    </div>
+
+    <div class="card" style="--accent:#4a8fff">
+      <span class="card-emoji">🏥</span>
+      <div class="card-name">South Goa District Hospital</div>
+      <div class="card-dist">📍 5 km · Margao · 10 min</div>
+      <div class="card-tags"><span class="tag" style="background:#4a8fff20;color:#4a8fff">GOVT HOSPITAL</span><span class="tag" style="background:#34d39920;color:var(--green)">FREE TREATMENT</span></div>
+      <div class="card-desc">Main government hospital for South Goa. Free treatment. All specialties. 24x7 emergency. Bring Aadhaar. Good for serious cases requiring specialist care.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <a href="tel:+918322262372" class="btn" style="--accent:#4a8fff">📞 +91 832 2705664</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=South+Goa+District+Hospital+Margao" target="_blank" class="btn btn-ghost" style="--accent:#4a8fff">🗺️ Maps</a>
+      </div>
+    </div>
+
+    <div class="card" style="--accent:var(--teal)">
+      <span class="card-emoji">🏥</span>
+      <div class="card-name">Manipal Hospital Goa</div>
+      <div class="card-dist">📍 15 km · Dona Paula · 30 min</div>
+      <div class="card-tags"><span class="tag" style="background:#0e9aa720;color:var(--teal)">PRIVATE</span><span class="tag" style="background:#a78bfa20;color:var(--purple)">CASHLESS INSURANCE</span></div>
+      <div class="card-desc">Premium private hospital. All specialties — cardiology, ortho, ENT. Best for cashless corporate insurance. English-speaking staff, international standards. Good for Microsoft health insurance.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <a href="tel:+918326646444" class="btn">📞 +91 832 6646444</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Manipal+Hospital+Dona+Paula+Goa" target="_blank" class="btn btn-ghost">🗺️ Maps</a>
+      </div>
+    </div>
+
+    <div class="card" style="--accent:var(--aqua)">
+      <span class="card-emoji">🏛️</span>
+      <div class="card-name">Goa Medical College</div>
+      <div class="card-dist">📍 18 km · Bambolim · 35 min</div>
+      <div class="card-tags"><span class="tag" style="background:#3fc1c020;color:var(--aqua)">SUPER-SPECIALITY</span><span class="tag" style="background:#f4623a20;color:var(--coral)">TRAUMA CENTRE</span></div>
+      <div class="card-desc">Goa's premier medical institution. Best for serious trauma, cardiac, neuro emergencies. ICU, all surgery types. Main government referral hospital for critical cases in Goa.</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <a href="tel:+918322458726" class="btn">📞 +91 832 2458726</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Goa+Medical+College+Hospital+Bambolim" target="_blank" class="btn btn-ghost">🗺️ Maps</a>
+      </div>
+    </div>
+
+    <div class="card" style="--accent:var(--gold)">
+      <span class="card-emoji">💊</span>
+      <div class="card-name">Cavelossim Medical Clinic</div>
+      <div class="card-dist">📍 0.8 km · 3-min walk</div>
+      <div class="card-tags"><span class="tag" style="background:#f4a22820;color:var(--gold)">CLOSEST</span><span class="tag" style="background:#34d39920;color:var(--green)">WALK-IN</span></div>
+      <div class="card-desc">Nearest clinic in Cavelossim village. General physician, common infections, minor injuries. Walk-in available. Mon–Sat 9am–7pm.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Medical+Clinic+Doctor+Cavelossim+Goa" target="_blank" class="btn">🗺️ Maps</a>
+    </div>
+
+    <div class="card" style="--accent:var(--green)">
+      <span class="card-emoji">💊</span>
+      <div class="card-name">24-Hour Pharmacy</div>
+      <div class="card-dist">📍 1 km · Cavelossim village</div>
+      <div class="card-tags"><span class="tag" style="background:#34d39920;color:var(--green)">24x7 ALWAYS OPEN</span></div>
+      <div class="card-desc">MedPlus or Apollo pharmacy nearest to hotel. Stock: ORS sachets, antacids, antihistamines, sunscreen, bandages, antifungal powder and common medicines. Ask hotel front desk to confirm current 24hr pharmacy.</div>
+      <a href="https://www.google.com/maps/search/?api=1&query=24+hour+pharmacy+Cavelossim+Margao+Goa" target="_blank" class="btn">🗺️ Maps</a>
+    </div>
+  </div>
+
+  <!-- Safety tips -->
+  <div class="tips" style="background:linear-gradient(135deg,#1a0808,#071828);border:1.5px solid #f4623a33">
+    <div class="tips-title" style="color:var(--coral)">⚠️ Safety &amp; Health Tips in Goa</div>
+    <div class="tips-grid">
+      <div class="tip" style="color:#7a2a2a">🚫 Never swim under red flag — rip currents are dangerous. Always check beach flags</div>
+      <div class="tip" style="color:#7a2a2a">💧 Drink only bottled water — avoid tap water, raw salads at street stalls</div>
+      <div class="tip" style="color:#7a2a2a">🦟 Use mosquito repellent in the evenings — especially near water</div>
+      <div class="tip" style="color:#7a2a2a">🛵 Slow down on scooters in rain — road surfaces get very slippery</div>
+      <div class="tip" style="color:#7a2a2a">💊 Carry ORS sachets — humidity causes rapid dehydration even without sun</div>
+      <div class="tip" style="color:#7a2a2a">📱 Save all emergency numbers offline — mobile data can be patchy in hills</div>
+      <div class="tip" style="color:#7a2a2a">🏥 Keep travel/health insurance details in phone photos</div>
+      <div class="tip" style="color:#7a2a2a">🔒 Hotel lockers available — leave valuables locked when on beach</div>
+    </div>
+  </div>
+
+</div>
+
+</div><!-- /wrap -->
+
+<button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<div class="footer">
+  🌴 REC Durgapur 1996 Batch Reunion · Goa Stay Guide · September 18–20, 2026<br/>
+  Base: Holiday Inn Resort Goa, an IHG Hotel · Mobor Beach, Cavelossim, South Goa<br/>
+  <span style="font-size:10px">All distances approximate from Holiday Inn Resort Goa, Cavelossim. Emergency numbers verified. Book restaurants in advance for weekends. Enjoy Goa! 🏖️</span>
+</div>
+
+<script>
+// ── TAB SWITCHING ──
+function showTab(name, btn) {
+  var secs = document.querySelectorAll('.section');
+  for (var i = 0; i < secs.length; i++) secs[i].classList.remove('on');
+  var tabs = document.querySelectorAll('.tab');
+  for (var i = 0; i < tabs.length; i++) tabs[i].classList.remove('on');
+  document.getElementById('sec-' + name).classList.add('on');
+  if (event && event.target) event.target.classList.add('on');
+  window.scrollTo({top: 120, behavior: 'smooth'});
+}
+
+// ── RAIN ANIMATION ──
+(function() {
+  var rain = document.getElementById('rain');
+  for (var i = 0; i < 40; i++) {
+    var drop = document.createElement('div');
+    drop.className = 'raindrop';
+    drop.style.left = (Math.random() * 100) + '%';
+    drop.style.height = (Math.random() * 60 + 30) + 'px';
+    drop.style.animationDuration = (Math.random() * 1.5 + 0.8) + 's';
+    drop.style.animationDelay = (Math.random() * 2) + 's';
+    drop.style.opacity = (Math.random() * 0.4 + 0.1) + '';
+    rain.appendChild(drop);
+  }
+})();
+</script>
+</body>
+</html>
