@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Goa Reunion 2026 ✈️</title>
+
+  <!-- React + Babel + Recharts from CDN — no install needed -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/recharts/2.8.0/Recharts.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{background:#040d14;font-family:'DM Sans',sans-serif;color:#b8d4e0;min-height:100vh}
+    #root{min-height:100vh}
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+    const {
+      AreaChart, Area, XAxis, YAxis, CartesianGrid,
+      Tooltip, ResponsiveContainer, ReferenceLine
+    } = Recharts;
+
+    // ── Config ────────────────────────────────────────────────────────────────
+    const ORIGINS = [
+      { code:"CCU", city:"Kolkata",   terminal:"Netaji S.C. Bose Int'l",   color:"#f59e0b" },
+      { code:"BLR", city:"Bangalore", terminal:"Kempegowda International", color:"#a78bfa" },
+      { code:"BOM", city:"Mumbai",    terminal:"CSIA T1 / T2",             color:"#38bdf8" },
+    ];
+    const GOA_ZONES = [
+      { id:"north", label:"North Goa", iata:"GOX", airport:"Manohar Intl (GOX)", desc:"Baga · Anjuna · Calangute", emoji:"🏄" },
+      { id:"south", label:"South Goa", iata:"GOI", airport:"Dabolim (GOI)",       desc:"Palolem · Colva · Benaulim", emoji:"🌴" },
+    ];
+
+    // ── URL builders ──────────────────────────────────────────────────────────
+    function fmt(ds) {
+      const [y,m,d] = ds.split("-");
+      return { ymd:ds, mmddyyyy:`${m}/${d}/${y}`, yymmdd:`${y.slice(2)}${m}${d}`, dmy:`${d}-${m}-${y}` };
+    }
+
+    function buildUrls(origin, destIata, depDate, retDate, tripType) {
+      const dep = fmt(depDate);
+      const ret = retDate ? fmt(retDate) : null;
+      const isRT = tripType === "roundtrip";
+      const dL = destIata.toLowerCase(), oL = origin.toLowerCase();
+      return [
+        {
+          name:"Google Flights", icon:"G", iconBg:"#4285F4", badge:"Most popular", badgeColor:"#4285F4",
+          url: isRT
+            ? `https://www.google.com/travel/flights?q=round+trip+flights+from+${origin}+to+${destIata}+on+${dep.ymd}+returning+${ret.ymd}&curr=INR`
+            : `https://www.google.com/travel/flights?q=one+way+flights+from+${origin}+to+${destIata}+on+${dep.ymd}&curr=INR`,
+        },
+        {
+          name:"Kayak", icon:"K", iconBg:"#FF690F", badge:"Best for deals", badgeColor:"#FF690F",
+          url: isRT
+            ? `https://www.kayak.co.in/flights/${origin}-${destIata}/${dep.ymd}/${ret.ymd}?sort=price_a`
+            : `https://www.kayak.co.in/flights/${origin}-${destIata}/${dep.ymd}?sort=price_a`,
+        },
+        {
+          name:"Skyscanner", icon:"S", iconBg:"#0770E3", badge:"Checks all airlines", badgeColor:"#0770E3",
+          url: isRT
+            ? `https://www.skyscanner.co.in/transport/flights/${oL}/${dL}/${dep.yymmdd}/${ret.yymmdd}/?adults=1&currency=INR&market=IN&locale=en-IN`
+            : `https://www.skyscanner.co.in/transport/flights/${oL}/${dL}/${dep.yymmdd}/?adults=1&currency=INR&market=IN&locale=en-IN`,
+        },
+        {
+          name:"MakeMyTrip", icon:"M", iconBg:"#E8113A", badge:"Best Indian deals", badgeColor:"#E8113A",
+          url: isRT
+            ? `https://www.makemytrip.com/flights/roundtrip-${oL}-${dL}.html?departDate=${dep.mmddyyyy}&returnDate=${ret?.mmddyyyy}&class=E&adults=1`
+            : `https://www.makemytrip.com/flights/oneway-${oL}-${dL}.html?departDate=${dep.mmddyyyy}&class=E&adults=1`,
+        },
+        {
+          name:"Cleartrip", icon:"C", iconBg:"#EF5226", badge:"Low-cost carriers", badgeColor:"#EF5226",
+          url: isRT
+            ? `https://www.cleartrip.com/flights/results?adults=1&childs=0&infants=0&class=Economy&depart_date=${dep.dmy}&return_date=${ret?.dmy}&from=${origin}&to=${destIata}&roundtrip=true`
+            : `https://www.cleartrip.com/flights/results?adults=1&childs=0&infants=0&class=Economy&depart_date=${dep.dmy}&from=${origin}&to=${destIata}`,
+        },
+        {
+          name:"EaseMyTrip", icon:"E", iconBg:"#00A3E0", badge:"No convenience fee", badgeColor:"#00A3E0",
+          url: isRT
+            ? `https://flight.easemytrip.com/FlightList/Index?seg=RT&org=${origin}&dest=${destIata}&ddate=${dep.mmddyyyy}&rdate=${ret?.mmddyyyy}&adult=1&child=0&infant=0&cls=1`
+            : `https://flight.easemytrip.com/FlightList/Index?seg=OW&org=${origin}&dest=${destIata}&ddate=${dep.mmddyyyy}&adult=1&child=0&infant=0&cls=1`,
+        },
+      ];
+    }
+
+    // ── Price Trend ───────────────────────────────────────────────────────────
+    const BASE = { CCU:4800, BLR:3200, BOM:2700 };
+    function makeTrend(origin, isRT) {
+      const b = BASE[origin] * (isRT ? 1.8 : 1);
+      let p = b, s = origin.charCodeAt(0) * 31 + (isRT ? 7 : 3);
+      const rng = () => { s=(s*1664525+1013904223)&0xffffffff; return (s>>>0)/4294967296; };
+      const now = new Date();
+      return Array.from({length:14},(_,i)=>{
+        const d=new Date(now); d.setDate(d.getDate()+i*5);
+        const label=d.toLocaleDateString("en-IN",{day:"2-digit",month:"short"});
+        p=Math.max(b*.6,Math.min(b*1.6,p+(rng()-.46)*.13*p));
+        return {label,price:Math.round(p/50)*50};
+      });
+    }
+
+    function TrendChart({origins,tripType}) {
+      const cols = origins.length ? origins : ["CCU"];
+      const tData = {};
+      cols.forEach(o=>{tData[o]=makeTrend(o,tripType==="roundtrip");});
+      const primary = tData[cols[0]];
+      const best = primary.reduce((m,d)=>d.price<m.price?d:m,primary[0]);
+      const merged = primary.map((d,i)=>{
+        const row={label:d.label};
+        cols.forEach(o=>{row[o]=tData[o][i]?.price;});
+        return row;
+      });
+      return (
+        <div>
+          <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",flexWrap:"wrap",gap:8,marginBottom:10}}>
+            <div>
+              <div className="stitle">📈 Estimated Price Trend — Next 70 Days</div>
+              <div style={{fontSize:10,color:"#c97b1a",marginTop:3,background:"#f59e0b0d",border:"1px solid #f59e0b22",borderRadius:5,padding:"3px 8px",display:"inline-block"}}>
+                ⚠️ Illustrative only — use search engines below for live prices
+              </div>
+              <div style={{fontSize:10,color:"#2e6070",marginTop:5}}>
+                Likely best window: <strong style={{color:"#34d399"}}>{best.label}</strong>
+                &nbsp;· est. ₹{best.price.toLocaleString("en-IN")}
+                &nbsp;· {tripType==="roundtrip"?"Round-trip":"One-way"}
+              </div>
+            </div>
+            <div style={{display:"flex",gap:5,flexWrap:"wrap"}}>
+              {cols.map(o=>{
+                const c=ORIGINS.find(r=>r.code===o)?.color||"#fff";
+                return <span key={o} style={{fontSize:10,padding:"2px 9px",borderRadius:20,fontWeight:600,color:c,background:c+"18",border:`1px solid ${c}33`}}>● {o}</span>;
+              })}
+            </div>
+          </div>
+          <ResponsiveContainer width="100%" height={195}>
+            <AreaChart data={merged} margin={{top:8,right:8,left:-10,bottom:0}}>
+              <defs>
+                {cols.map(o=>{
+                  const c=ORIGINS.find(r=>r.code===o)?.color||"#fff";
+                  return (
+                    <linearGradient key={o} id={`tg${o}`} x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={c} stopOpacity={0.28}/>
+                      <stop offset="95%" stopColor={c} stopOpacity={0}/>
+                    </linearGradient>
+                  );
+                })}
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" stroke="#172d3d" vertical={false}/>
+              <XAxis dataKey="label" tick={{fill:"#3a6878",fontSize:10}} axisLine={false} tickLine={false} interval={2}/>
+              <YAxis tick={{fill:"#3a6878",fontSize:10}} axisLine={false} tickLine={false} tickFormatter={v=>`₹${(v/1000).toFixed(1)}k`}/>
+              <Tooltip contentStyle={{background:"#07111a",border:"1px solid #172d3d",borderRadius:8,fontSize:12}}
+                labelStyle={{color:"#7fb3c8"}} formatter={(v,n)=>[`₹${Number(v).toLocaleString("en-IN")}`,n]}/>
+              <ReferenceLine x={best.label} stroke="#f59e0b" strokeDasharray="4 2"
+                label={{value:"Best window",fill:"#f59e0b",fontSize:9,position:"insideTopLeft"}}/>
+              {cols.map(o=>{
+                const c=ORIGINS.find(r=>r.code===o)?.color||"#fff";
+                return <Area key={o} type="monotone" dataKey={o} stroke={c} strokeWidth={2}
+                  fill={`url(#tg${o})`} dot={false} activeDot={{r:4,fill:c}}/>;
+              })}
+            </AreaChart>
+          </ResponsiveContainer>
+        </div>
+      );
+    }
+
+    // ── Engine Button ─────────────────────────────────────────────────────────
+    function EngineBtn({engine,idx}) {
+      const [clicked,setClicked] = useState(false);
+      return (
+        <a href={engine.url} target="_blank" rel="noreferrer"
+          onClick={()=>setClicked(true)}
+          style={{
+            display:"flex",alignItems:"center",gap:10,
+            background: clicked ? engine.iconBg+"12" : "#040d14",
+            border:`1.5px solid ${clicked ? engine.iconBg+"99" : "#102434"}`,
+            borderRadius:10,padding:"10px 12px",textDecoration:"none",
+            transition:"all .2s",animationDelay:`${idx*60}ms`,
+            cursor:"pointer",
+          }}
+          onMouseEnter={e=>{e.currentTarget.style.borderColor=engine.iconBg+"66";e.currentTarget.style.transform="translateY(-1px)";}}
+          onMouseLeave={e=>{e.currentTarget.style.borderColor=clicked?engine.iconBg+"99":"#102434";e.currentTarget.style.transform="translateY(0)";}}
+        >
+          <div style={{width:34,height:34,borderRadius:8,background:engine.iconBg,display:"flex",alignItems:"center",justifyContent:"center",fontFamily:"'Syne',sans-serif",fontSize:15,fontWeight:800,color:"#fff",flexShrink:0}}>
+            {engine.icon}
+          </div>
+          <div style={{flex:1,minWidth:0}}>
+            <div style={{fontFamily:"'Syne',sans-serif",fontSize:13,fontWeight:700,color:"#c8e4f0"}}>{engine.name}</div>
+            <div style={{fontSize:9,padding:"1px 7px",borderRadius:10,display:"inline-block",marginTop:3,fontWeight:600,letterSpacing:.3,color:engine.badgeColor,background:engine.badgeColor+"15"}}>
+              {engine.badge}
+            </div>
+          </div>
+          <div style={{fontSize:14,color:clicked?"#34d399":engine.iconBg,flexShrink:0,fontWeight:700}}>
+            {clicked?"✓":"↗"}
+          </div>
+        </a>
+      );
+    }
+
+    // ── Origin Block ──────────────────────────────────────────────────────────
+    function OriginBlock({originCode,zone,depDate,retDate,tripType,idx}) {
+      const o = ORIGINS.find(r=>r.code===originCode);
+      const z = GOA_ZONES.find(z=>z.id===zone);
+      const urls = buildUrls(originCode,z.iata,depDate,retDate,tripType);
+      const depFmt = new Date(depDate).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"});
+      const retFmt = retDate&&tripType==="roundtrip"
+        ? new Date(retDate).toLocaleDateString("en-IN",{day:"numeric",month:"short",year:"numeric"}) : null;
+
+      return (
+        <div style={{background:"#07131d",border:`1px solid ${o.color}33`,borderRadius:14,padding:18,marginBottom:12,animation:"sup .35s ease both",animationDelay:`${idx*100}ms`}}>
+          {/* Header */}
+          <div style={{display:"flex",alignItems:"flex-start",justifyContent:"space-between",flexWrap:"wrap",gap:8,marginBottom:14}}>
+            <div style={{display:"flex",alignItems:"center",flexWrap:"wrap",gap:8}}>
+              <span style={{fontFamily:"'Syne',sans-serif",fontSize:26,fontWeight:800,color:o.color}}>{originCode}</span>
+              <span style={{fontSize:20,color:"#2e6070"}}>{tripType==="roundtrip"?"⇄":"→"}</span>
+              <span style={{fontFamily:"'Syne',sans-serif",fontSize:26,fontWeight:800,color:"#06b6d4"}}>{z.iata}</span>
+              <div style={{display:"flex",alignItems:"center",gap:6,flexWrap:"wrap",fontSize:11,color:"#3a7a8a",marginLeft:4}}>
+                <span>{o.city} → {z.label}</span>
+                <span style={{color:"#1e4a5a"}}>·</span>
+                <span>{depFmt}{retFmt?` ↩ ${retFmt}`:""}</span>
+                <span style={{color:"#1e4a5a"}}>·</span>
+                <span>{tripType==="roundtrip"?"Round Trip":"One Way"}</span>
+              </div>
+            </div>
+            <div style={{fontSize:10,color:"#1e4a5a",fontStyle:"italic",alignSelf:"center"}}>Click any to open live prices →</div>
+          </div>
+
+          {/* Grid */}
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(230px,1fr))",gap:8}}>
+            {urls.map((eng,i)=><EngineBtn key={eng.name} engine={eng} idx={i}/>)}
+          </div>
+
+          {/* Tip */}
+          <div style={{marginTop:12,padding:"9px 12px",background:"#06b6d408",border:"1px solid #06b6d420",borderRadius:8,fontSize:11,color:"#2e7090",lineHeight:1.5}}>
+            💡 <strong style={{color:"#06b6d4"}}>Pro tip:</strong> Open all 6 in separate tabs, sort by price — different engines show different airlines & exclusive deals!
+          </div>
+        </div>
+      );
+    }
+
+    // ── Main App ──────────────────────────────────────────────────────────────
+    function App() {
+      const pad = n => n<10?`0${n}`:`${n}`;
+      const dateStr = offset => {
+        const d=new Date(); d.setDate(d.getDate()+offset);
+        return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+      };
+
+      const [tripType, setTripType] = useState("oneway");
+      const [origins,  setOrigins]  = useState(["CCU"]);
+      const [zone,     setZone]     = useState("north");
+      const [depDate,  setDepDate]  = useState(()=>dateStr(60));
+      const [retDate,  setRetDate]  = useState(()=>dateStr(67));
+      const [launched, setLaunched] = useState(false);
+
+      const toggleOrigin = code =>
+        setOrigins(p=>p.includes(code)?(p.length>1?p.filter(o=>o!==code):p):[...p,code]);
+
+      const handleDep = v => {
+        setDepDate(v);
+        if(retDate<=v){const d=new Date(v);d.setDate(d.getDate()+7);setRetDate(`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`);}
+      };
+
+      const zoneInfo = GOA_ZONES.find(z=>z.id===zone);
+
+      return (
+        <div style={{
+          minHeight:"100vh",
+          background:"radial-gradient(ellipse 100% 45% at 50% -5%,#0c2e42 0%,transparent 65%),radial-gradient(ellipse 60% 35% at 90% 90%,#081e15 0%,transparent 60%),#040d14",
+          paddingBottom:60,
+        }}>
+
+          {/* Hero */}
+          <div style={{padding:"30px 20px 14px",textAlign:"center"}}>
+            <div style={{display:"inline-flex",alignItems:"center",gap:6,background:"#f59e0b15",border:"1px solid #f59e0b40",borderRadius:20,padding:"4px 14px",fontSize:11,letterSpacing:"1.5px",textTransform:"uppercase",color:"#fbbf24",marginBottom:12}}>
+              🌴 Goa Reunion 2026
+            </div>
+            <h1 style={{fontFamily:"'Syne',sans-serif",fontSize:"clamp(24px,5vw,46px)",fontWeight:800,lineHeight:1.1,color:"#fff"}}>
+              Fly to{" "}
+              <span style={{background:"linear-gradient(120deg,#06b6d4,#34d399)",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>Goa</span>
+              <br/>Everyone's on board
+            </h1>
+            <p style={{marginTop:7,color:"#2e6070",fontSize:13}}>Search 6 engines · 100% live prices · Find the best deal</p>
+          </div>
+
+          <div style={{maxWidth:960,margin:"0 auto",padding:"0 14px"}}>
+
+            {/* How it works */}
+            <div style={{display:"flex",alignItems:"flex-start",gap:12,background:"#07131d",border:"1px solid #102434",borderLeft:"3px solid #06b6d4",borderRadius:10,padding:"12px 14px",marginBottom:12}}>
+              <div style={{fontSize:22,flexShrink:0,marginTop:1}}>✈️</div>
+              <div style={{fontSize:12,color:"#3a7a8a",lineHeight:1.7}}>
+                <strong style={{color:"#06b6d4"}}>Why 6 engines?</strong> No single site shows every airline.
+                <strong style={{color:"#06b6d4"}}> Kayak & Skyscanner</strong> often find budget carriers Google misses.
+                <strong style={{color:"#06b6d4"}}> MakeMyTrip & EaseMyTrip</strong> have India-specific deals & zero convenience fee offers.
+                Fill in your details and get a direct search link for every platform — pre-filled with your exact route & dates.
+              </div>
+            </div>
+
+            {/* Search Panel */}
+            <div className="panel">
+
+              {/* Trip Type */}
+              <div className="stitle">🎫 Trip Type</div>
+              <div style={{display:"flex",background:"#040d14",border:"1.5px solid #102434",borderRadius:10,overflow:"hidden",marginBottom:18}}>
+                {[
+                  {val:"oneway",  label:"✈ One Way"},
+                  {val:"roundtrip",label:"🔄 Round Trip"},
+                ].map((t,i)=>(
+                  <React.Fragment key={t.val}>
+                    {i>0&&<div style={{width:1,background:"#102434",flexShrink:0}}/>}
+                    <button onClick={()=>setTripType(t.val)}
+                      style={{flex:1,border:"none",background:tripType===t.val?"linear-gradient(135deg,#0c6a82,#06b6d4)":"transparent",padding:"12px 8px",cursor:"pointer",fontFamily:"'Syne',sans-serif",fontSize:13,fontWeight:700,color:tripType===t.val?"#fff":"#2e6070",transition:"all .2s",display:"flex",alignItems:"center",justifyContent:"center",gap:6}}>
+                      {t.label}
+                      {t.val==="roundtrip"&&<span style={{background:"#34d39918",color:"#34d399",fontSize:9,padding:"2px 7px",borderRadius:10,fontWeight:700,letterSpacing:.5}}>SAVE ~15%</span>}
+                    </button>
+                  </React.Fragment>
+                ))}
+              </div>
+
+              {/* Origins */}
+              <div className="stitle">📍 Flying From — select everyone's city</div>
+              <div style={{display:"flex",flexWrap:"wrap",gap:8,marginBottom:16}}>
+                {ORIGINS.map(o=>(
+                  <div key={o.code}
+                    onClick={()=>toggleOrigin(o.code)}
+                    style={{
+                      flex:1,minWidth:120,background:"#040d14",
+                      border:`1.5px solid ${origins.includes(o.code)?o.color:"#102434"}`,
+                      borderRadius:11,padding:12,cursor:"pointer",transition:"all .2s",position:"relative",
+                      boxShadow:origins.includes(o.code)?`0 0 0 1px ${o.color}44,inset 0 0 20px ${o.color}0a`:"none",
+                    }}
+                    onMouseEnter={e=>e.currentTarget.style.transform="translateY(-1px)"}
+                    onMouseLeave={e=>e.currentTarget.style.transform="translateY(0)"}
+                  >
+                    {origins.includes(o.code)&&<span style={{position:"absolute",top:8,right:9,fontSize:10,color:o.color}}>✓</span>}
+                    <div style={{fontFamily:"'Syne',sans-serif",fontSize:21,fontWeight:800,color:o.color}}>{o.code}</div>
+                    <div style={{fontSize:12,color:"#a0c0cc",margin:"2px 0"}}>{o.city}</div>
+                    <div style={{fontSize:9,color:"#1e4a5a",lineHeight:1.3}}>{o.terminal}</div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Zone */}
+              <div className="stitle">🏝️ Flying To — Goa region</div>
+              <div style={{display:"flex",gap:8,marginBottom:16}}>
+                {GOA_ZONES.map(z=>(
+                  <button key={z.id} onClick={()=>setZone(z.id)}
+                    style={{
+                      flex:1,background:"#040d14",border:`1.5px solid ${zone===z.id?"#06b6d4":"#102434"}`,
+                      borderRadius:10,padding:11,cursor:"pointer",color:zone===z.id?"#06b6d4":"#4a7a8a",
+                      transition:"all .2s",textAlign:"left",background:zone===z.id?"#06b6d408":"#040d14",
+                    }}>
+                    <div style={{fontSize:17}}>{z.emoji}</div>
+                    <div style={{fontFamily:"'Syne',sans-serif",fontWeight:700,fontSize:13,marginTop:2}}>
+                      {z.label} <span style={{fontSize:10,opacity:.6}}>({z.iata})</span>
+                    </div>
+                    <div style={{fontSize:9,color:"#1e4a5a",marginTop:2}}>{z.desc}</div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Dates */}
+              <div className="stitle">📅 Travel Dates</div>
+              <div style={{display:"flex",gap:8,marginBottom:16}}>
+                {[
+                  {label:"✈ Departure",  val:depDate, min:new Date().toISOString().split("T")[0], disabled:false, onChange:handleDep},
+                  {label:`↩ Return${tripType==="oneway"?" (n/a)":""}`, val:retDate, min:depDate, disabled:tripType==="oneway", onChange:e=>setRetDate(e.target.value)},
+                ].map((f,i)=>(
+                  <div key={i} style={{flex:1}}>
+                    <div style={{fontSize:9,color:i===1&&tripType==="oneway"?"#0e2030":"#2e6070",marginBottom:4,letterSpacing:.5,textTransform:"uppercase"}}>{f.label}</div>
+                    <input type="date" value={f.val} min={f.min} disabled={f.disabled}
+                      onChange={typeof f.onChange==="function"?e=>f.onChange(e.target.value):f.onChange}
+                      style={{width:"100%",background:"#040d14",border:"1.5px solid #102434",borderRadius:9,padding:"10px 13px",color:"#b8d4e0",fontSize:14,fontFamily:"'DM Sans',sans-serif",outline:"none",opacity:f.disabled?.25:1,cursor:f.disabled?"not-allowed":"auto"}}
+                      onFocus={e=>e.target.style.borderColor="#06b6d4"}
+                      onBlur={e=>e.target.style.borderColor="#102434"}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA */}
+              <button onClick={()=>setLaunched(true)}
+                style={{width:"100%",background:"linear-gradient(135deg,#06b6d4,#0c6a82)",border:"none",borderRadius:11,padding:14,fontFamily:"'Syne',sans-serif",fontSize:15,fontWeight:800,color:"#fff",cursor:"pointer",transition:"all .2s",display:"flex",alignItems:"center",justifyContent:"center",gap:8,letterSpacing:.3}}
+                onMouseEnter={e=>{e.target.style.transform="translateY(-2px)";e.target.style.boxShadow="0 8px 28px #06b6d440";}}
+                onMouseLeave={e=>{e.target.style.transform="translateY(0)";e.target.style.boxShadow="none";}}>
+                🔍 Generate Search Links for All 6 Engines
+              </button>
+            </div>
+
+            {/* Trend Chart */}
+            <div className="panel">
+              <TrendChart origins={origins} tripType={tripType}/>
+            </div>
+
+            {/* Tips */}
+            <div style={{background:"linear-gradient(135deg,#061a10,#040d14)",border:"1px solid #0e3020",borderRadius:12,padding:14,marginBottom:12}}>
+              <div style={{fontFamily:"'Syne',sans-serif",fontSize:10,fontWeight:700,color:"#34d399",letterSpacing:1,textTransform:"uppercase",marginBottom:8}}>🎓 Reunion booking tips</div>
+              <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(155px,1fr))",gap:5}}>
+                {[
+                  "Always compare 3+ engines — prices vary ₹500–2,000",
+                  "Round-trips often 10–15% cheaper than 2 one-ways",
+                  "Tue & Wed departures typically cheapest",
+                  "Book 3–4 weeks ahead — sweet spot for domestic India",
+                  "EaseMyTrip often has zero convenience fee promos",
+                  "Enable price tracking alerts on Google Flights",
+                ].map((t,i)=>(
+                  <div key={i} style={{fontSize:10,color:"#1e5a38",display:"flex",gap:4}}>✅ {t}</div>
+                ))}
+              </div>
+            </div>
+
+            {/* Results */}
+            {!launched ? (
+              <div className="panel" style={{textAlign:"center",padding:"44px 20px"}}>
+                <div style={{fontSize:40,marginBottom:8}}>🏖️</div>
+                <div style={{fontSize:13,color:"#1e4a5a"}}>Your search links will appear here</div>
+                <div style={{fontSize:10,marginTop:4,color:"#0e2a38"}}>Fill in your details above and click Generate</div>
+              </div>
+            ) : (
+              origins.map((o,i)=>(
+                <OriginBlock key={o} originCode={o} zone={zone} depDate={depDate} retDate={retDate} tripType={tripType} idx={i}/>
+              ))
+            )}
+
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+  </script>
+
+  <style>
+    .panel{background:#07131d;border:1px solid #102434;border-radius:14px;padding:18px;margin-bottom:12px}
+    .stitle{font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#2e7a90;margin-bottom:8px}
+    @keyframes sup{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+    input[type="date"]::-webkit-calendar-picker-indicator{filter:invert(.35);cursor:pointer}
+    @media(max-width:520px){
+      .og,.zrow,.drow{flex-direction:column!important}
+    }
+  </style>
+</body>
+</html>
